@@ -34,6 +34,7 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,6 +61,32 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
         });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane3.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(250);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(250);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(250);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(200);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(200);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(200);
+            jTable1.getColumnModel().getColumn(4).setMinWidth(200);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(200);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(200);
+            jTable1.getColumnModel().getColumn(5).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(6).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(6).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(150);
+            jTable1.getColumnModel().getColumn(7).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(7).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(150);
+        }
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Agregar1.png"))); // NOI18N
         jButton4.setContentAreaFilled(false);
@@ -75,6 +102,9 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Eliminar1.png"))); // NOI18N
         jButton6.setContentAreaFilled(false);
 
+        jLabel1.setFont(new java.awt.Font("Euphemia", 0, 18)); // NOI18N
+        jLabel1.setText("Anticipos");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -88,20 +118,27 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
                 .addComponent(jButton6)
                 .addGap(136, 136, 136))
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(371, 371, 371)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(122, 122, 122)
+                .addGap(60, 60, 60)
+                .addComponent(jLabel1)
+                .addGap(48, 48, 48)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(87, 87, 87)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(jButton6)
+                    .addComponent(jButton4))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
@@ -118,7 +155,7 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 583, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -175,6 +212,7 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
