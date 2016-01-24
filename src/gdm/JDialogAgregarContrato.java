@@ -185,11 +185,6 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
         spMinutoFoto.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
 
         txtLugarFoto.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        txtLugarFoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLugarFotoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -252,11 +247,6 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
         jLabel19.setText("Lugar:");
 
         txtLugarMisa.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        txtLugarMisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLugarMisaActionPerformed(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel12.setText("Hora:");
@@ -333,11 +323,6 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
         jLabel24.setText("Lugar:");
 
         txtLugarBaile.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        txtLugarBaile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLugarBaileActionPerformed(evt);
-            }
-        });
 
         jLabel14.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel14.setText("Hora:");
@@ -516,18 +501,6 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtLugarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarFotoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLugarFotoActionPerformed
-
-    private void txtLugarMisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarMisaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLugarMisaActionPerformed
-
-    private void txtLugarBaileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarBaileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLugarBaileActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:

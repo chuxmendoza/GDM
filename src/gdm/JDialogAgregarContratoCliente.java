@@ -61,65 +61,65 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
         jPanel14 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rbReconocimiento = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jComboBox2 = new javax.swing.JComboBox();
+        txtAgradecimiento = new javax.swing.JTextArea();
+        comboDirigido = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jRadioButton11 = new javax.swing.JRadioButton();
+        txtDirigido = new javax.swing.JTextField();
+        rbTriptico = new javax.swing.JRadioButton();
         comboAgradecimiento = new gdm.presentacion.CustomComboBox();
         jLabel10 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rbFotoPanoramica = new javax.swing.JRadioButton();
+        rbFotoPersonalizada = new javax.swing.JRadioButton();
         jLabel12 = new javax.swing.JLabel();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        rbFotoMisa = new javax.swing.JRadioButton();
+        rbFotoEstudio = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtKilates = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtGramos = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         comboMaterial = new gdm.presentacion.CustomComboBox();
         jPanel11 = new javax.swing.JPanel();
-        jRadioButton22 = new javax.swing.JRadioButton();
-        jRadioButton23 = new javax.swing.JRadioButton();
-        jRadioButton24 = new javax.swing.JRadioButton();
+        rbRentaToga = new javax.swing.JRadioButton();
+        cbMisa = new javax.swing.JRadioButton();
+        cbBaile = new javax.swing.JRadioButton();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jSpinner9 = new javax.swing.JSpinner();
+        spMesaExtra = new javax.swing.JSpinner();
         jLabel30 = new javax.swing.JLabel();
-        jSpinner10 = new javax.swing.JSpinner();
+        spFotosExtra = new javax.swing.JSpinner();
         jLabel31 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtComentarios = new javax.swing.JTextArea();
         jLabel35 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        txtPrecio = new javax.swing.JTextField();
+        dateFechaContrato = new org.jdesktop.swingx.JXDatePicker();
         jLabel17 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        txtFolio = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnAgregarAnticipo = new javax.swing.JButton();
+        btnEditarAnticipo = new javax.swing.JButton();
+        btnEliminarAnticipo = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
+        dateEntregaDatos = new org.jdesktop.swingx.JXDatePicker();
         jPanel9 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jXDatePicker3 = new org.jdesktop.swingx.JXDatePicker();
+        dateLimitePago = new org.jdesktop.swingx.JXDatePicker();
         jPanel10 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jXDatePicker4 = new org.jdesktop.swingx.JXDatePicker();
-        jButton3 = new javax.swing.JButton();
+        dateEntregaPaquete = new org.jdesktop.swingx.JXDatePicker();
+        btnAceptar = new javax.swing.JButton();
 
         jTextField12.setText("jTextField12");
 
@@ -137,11 +137,6 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
 
         jButton1.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jButton1.setText("Nuevo Cliente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel1.setText("Nombre :");
@@ -302,9 +297,9 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Infotmación delCliente", jPanel2);
 
-        comboModelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboModeloActionPerformed(evt);
+        comboModelo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboModeloItemStateChanged(evt);
             }
         });
 
@@ -362,27 +357,27 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jRadioButton1.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jRadioButton1.setText("Reconocimiento o título");
+        rbReconocimiento.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        rbReconocimiento.setText("Reconocimiento o título");
 
         jLabel7.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel7.setText("Agradecimiento #:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAgradecimiento.setColumns(20);
+        txtAgradecimiento.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtAgradecimiento.setRows(5);
+        jScrollPane1.setViewportView(txtAgradecimiento);
 
-        jComboBox2.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mis Padres", "Mi Familia", "Otro" }));
+        comboDirigido.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        comboDirigido.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mis Padres", "Mi Familia", "Otro" }));
 
         jLabel8.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel8.setText("Dirigido a:");
 
-        jTextField6.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtDirigido.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
 
-        jRadioButton11.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jRadioButton11.setText("Triptico");
+        rbTriptico.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        rbTriptico.setText("Triptico");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -391,20 +386,20 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6)
+                    .addComponent(txtDirigido)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(comboDirigido, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jRadioButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rbTriptico, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(rbReconocimiento)
                                 .addGap(0, 3, Short.MAX_VALUE))
                             .addComponent(comboAgradecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -414,8 +409,8 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton11)
-                    .addComponent(jRadioButton1))
+                    .addComponent(rbTriptico)
+                    .addComponent(rbReconocimiento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -425,9 +420,9 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboDirigido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDirigido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -436,20 +431,20 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jRadioButton2.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jRadioButton2.setText("Foto panoramica");
+        rbFotoPanoramica.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        rbFotoPanoramica.setText("Foto panoramica");
 
-        jRadioButton3.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jRadioButton3.setText("Foto Personalizada");
+        rbFotoPersonalizada.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        rbFotoPersonalizada.setText("Foto Personalizada");
 
         jLabel12.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel12.setText("Foto Evento");
 
-        jRadioButton4.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jRadioButton4.setText("Misa");
+        rbFotoMisa.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        rbFotoMisa.setText("Misa");
 
-        jRadioButton5.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jRadioButton5.setText("Estudio");
+        rbFotoEstudio.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        rbFotoEstudio.setText("Estudio");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -464,13 +459,13 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                         .addGap(36, 36, 36)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jRadioButton4)
+                                .addComponent(rbFotoMisa)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton5))
+                                .addComponent(rbFotoEstudio))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jRadioButton2)
+                                .addComponent(rbFotoPanoramica)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton3)))))
+                                .addComponent(rbFotoPersonalizada)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -478,14 +473,14 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rbFotoPersonalizada)
+                    .addComponent(rbFotoPanoramica))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton5))
+                    .addComponent(rbFotoMisa)
+                    .addComponent(rbFotoEstudio))
                 .addContainerGap())
         );
 
@@ -494,7 +489,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
         jLabel13.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel13.setText("Anillos");
 
-        jTextField7.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtKilates.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel14.setText("Kilates:");
@@ -502,7 +497,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
         jLabel15.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel15.setText("Gramos:");
 
-        jTextField8.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtGramos.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
 
         jLabel20.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel20.setText("Material:");
@@ -522,11 +517,11 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtKilates, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtGramos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel20)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -544,23 +539,23 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                     .addComponent(comboMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtKilates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGramos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jRadioButton22.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
-        jRadioButton22.setText("Renta de toga");
+        rbRentaToga.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
+        rbRentaToga.setText("Renta de toga");
 
-        jRadioButton23.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
-        jRadioButton23.setText("Misa");
+        cbMisa.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
+        cbMisa.setText("Misa");
 
-        jRadioButton24.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
-        jRadioButton24.setText("Baile");
+        cbBaile.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
+        cbBaile.setText("Baile");
 
         jLabel28.setText("Evento");
 
@@ -576,11 +571,11 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jRadioButton22)
+                        .addComponent(rbRentaToga)
                         .addGap(46, 46, 46)
-                        .addComponent(jRadioButton23)
+                        .addComponent(cbMisa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton24)
+                        .addComponent(cbBaile)
                         .addGap(61, 61, 61))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
@@ -593,8 +588,8 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                                     .addComponent(jLabel29))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jSpinner10)
-                                    .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(spFotosExtra)
+                                    .addComponent(spMesaExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel11Layout.setVerticalGroup(
@@ -602,39 +597,39 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton22)
-                    .addComponent(jRadioButton23)
-                    .addComponent(jRadioButton24))
+                    .addComponent(rbRentaToga)
+                    .addComponent(cbMisa)
+                    .addComponent(cbBaile))
                 .addGap(11, 11, 11)
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
-                    .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spMesaExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
-                    .addComponent(jSpinner10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spFotosExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel31.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel31.setText("Comentarios:");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtComentarios.setColumns(20);
+        txtComentarios.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtComentarios.setRows(5);
+        jScrollPane2.setViewportView(txtComentarios);
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel35.setText("Precio del paquete: $");
 
-        jTextField13.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        txtPrecio.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel17.setText("Fecha:");
 
-        jTextField14.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
+        txtFolio.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
         jLabel11.setText("Folio:");
@@ -650,14 +645,14 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                         .addGap(239, 410, Short.MAX_VALUE)
                         .addComponent(jLabel35)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtFolio, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -677,7 +672,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                         .addGap(268, 268, 268)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dateFechaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(59, 59, 59))
         );
         jPanel1Layout.setVerticalGroup(
@@ -685,14 +680,14 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateFechaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFolio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -761,19 +756,19 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
         }
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Agregar1.png"))); // NOI18N
-        jButton4.setContentAreaFilled(false);
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar2.png"))); // NOI18N
-        jButton4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar3.png"))); // NOI18N
+        btnAgregarAnticipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Agregar1.png"))); // NOI18N
+        btnAgregarAnticipo.setContentAreaFilled(false);
+        btnAgregarAnticipo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar2.png"))); // NOI18N
+        btnAgregarAnticipo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar3.png"))); // NOI18N
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar1.png"))); // NOI18N
-        jButton5.setContentAreaFilled(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar2.png"))); // NOI18N
-        jButton5.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar3.png"))); // NOI18N
+        btnEditarAnticipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar1.png"))); // NOI18N
+        btnEditarAnticipo.setContentAreaFilled(false);
+        btnEditarAnticipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarAnticipo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar2.png"))); // NOI18N
+        btnEditarAnticipo.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar3.png"))); // NOI18N
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Eliminar1.png"))); // NOI18N
-        jButton6.setContentAreaFilled(false);
+        btnEliminarAnticipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Eliminar1.png"))); // NOI18N
+        btnEliminarAnticipo.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -781,11 +776,11 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(93, 93, 93)
-                .addComponent(jButton4)
+                .addComponent(btnAgregarAnticipo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addComponent(btnEditarAnticipo)
                 .addGap(40, 40, 40)
-                .addComponent(jButton6)
+                .addComponent(btnEliminarAnticipo)
                 .addGap(136, 136, 136))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -799,9 +794,9 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton4))
+                    .addComponent(btnEditarAnticipo)
+                    .addComponent(btnEliminarAnticipo)
+                    .addComponent(btnAgregarAnticipo))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -822,7 +817,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addContainerGap(47, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addGap(18, 18, 18)
-                .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateEntregaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
         jPanel7Layout.setVerticalGroup(
@@ -831,7 +826,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateEntregaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
 
@@ -848,7 +843,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel18)
                 .addGap(18, 18, 18)
-                .addComponent(jXDatePicker3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateLimitePago, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
         );
         jPanel9Layout.setVerticalGroup(
@@ -857,7 +852,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
-                    .addComponent(jXDatePicker3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateLimitePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -874,7 +869,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
-                .addComponent(jXDatePicker4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateEntregaPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
         jPanel10Layout.setVerticalGroup(
@@ -883,7 +878,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jXDatePicker4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateEntregaPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -913,10 +908,15 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Fechas de Entrega ", jPanel6);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar1.png"))); // NOI18N
-        jButton3.setContentAreaFilled(false);
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar2.png"))); // NOI18N
-        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar3.png"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar1.png"))); // NOI18N
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar2.png"))); // NOI18N
+        btnAceptar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Aceptar3.png"))); // NOI18N
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -925,14 +925,14 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3))
+                .addComponent(btnAceptar))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnAceptar)
                 .addContainerGap())
         );
 
@@ -972,33 +972,35 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jPanel1PropertyChange
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void comboModeloItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboModeloItemStateChanged
         // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        System.out.println("qweqwe");
+    }//GEN-LAST:event_comboModeloItemStateChanged
 
-    private void comboModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboModeloActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         
-        
-        
-        
-    }//GEN-LAST:event_comboModeloActionPerformed
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAgregarAnticipo;
+    private javax.swing.JButton btnEditarAnticipo;
+    private javax.swing.JButton btnEliminarAnticipo;
+    private javax.swing.JRadioButton cbBaile;
+    private javax.swing.JRadioButton cbMisa;
     private gdm.presentacion.CustomComboBox comboAgradecimiento;
+    private javax.swing.JComboBox comboDirigido;
     private gdm.presentacion.CustomComboBox comboMaterial;
     private gdm.presentacion.CustomComboBox comboModelo;
+    private org.jdesktop.swingx.JXDatePicker dateEntregaDatos;
+    private org.jdesktop.swingx.JXDatePicker dateEntregaPaquete;
+    private org.jdesktop.swingx.JXDatePicker dateFechaContrato;
+    private org.jdesktop.swingx.JXDatePicker dateLimitePago;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1041,41 +1043,35 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton11;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton22;
-    private javax.swing.JRadioButton jRadioButton23;
-    private javax.swing.JRadioButton jRadioButton24;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner10;
-    private javax.swing.JSpinner jSpinner9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker3;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker4;
+    private javax.swing.JRadioButton rbFotoEstudio;
+    private javax.swing.JRadioButton rbFotoMisa;
+    private javax.swing.JRadioButton rbFotoPanoramica;
+    private javax.swing.JRadioButton rbFotoPersonalizada;
+    private javax.swing.JRadioButton rbReconocimiento;
+    private javax.swing.JRadioButton rbRentaToga;
+    private javax.swing.JRadioButton rbTriptico;
+    private javax.swing.JSpinner spFotosExtra;
+    private javax.swing.JSpinner spMesaExtra;
+    private javax.swing.JTextArea txtAgradecimiento;
+    private javax.swing.JTextArea txtComentarios;
+    private javax.swing.JTextField txtDirigido;
+    private javax.swing.JTextField txtFolio;
+    private javax.swing.JTextField txtGramos;
+    private javax.swing.JTextField txtKilates;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
