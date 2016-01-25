@@ -7,7 +7,7 @@
       <generator class="identity"/>
     </id>
 
-  <property name="folio" type="string" column="folio" />
+  <property name="folio" type="int" column="folio" />
   <many-to-one name="modelo" column="idModelo" 
             class="gdm.entidades.clases.Modelo" />
   <property name="reconocimiento" type="org.hibernate.type.NumericBooleanType" column="reconocimiento" />
@@ -17,8 +17,8 @@
   <property name="fotoMisa" type="org.hibernate.type.NumericBooleanType" column="fotoMisa" />
   <property name="fotoPanoramica" type="org.hibernate.type.NumericBooleanType" column="fotoPanoramica" />
   <property name="fotoEstudio" type="org.hibernate.type.NumericBooleanType" column="fotoEstudio" />
-  <many-to-one name="anillo" column="idAnillo" 
-            class="gdm.entidades.clases.Anillo"/>
+  <many-to-one name="anillo" column="idAnillo" cascade="save-update"
+            class="gdm.entidades.clases.Anillo" />
   <property name="rentaToga" type="org.hibernate.type.NumericBooleanType" column="rentaToga" />
   <property name="misa" type="org.hibernate.type.NumericBooleanType" column="misa" />
   <property name="baile" type="org.hibernate.type.NumericBooleanType" column="baile" />

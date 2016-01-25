@@ -286,12 +286,23 @@ public class JPanelContrato extends javax.swing.JPanel {
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
         // TODO add your handling code here:
-         btnVer.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if(tblGraduacion.getSelectedRow()!= -1){
-        
-        JDialogContratoCliente contrato = new JDialogContratoCliente(null, true);
-       contrato.setVisible(true);
-            }
+        try
+        {
+         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tblGraduacion.getSelectedRow()!= -1)
+            {    
+                JDialogContratoCliente contrato = new JDialogContratoCliente(null, true);
+                contrato.idContrato =  Integer.parseInt(tblGraduacion.getValueAt(tblGraduacion.getSelectedRow(), 0).toString());
+                contrato.setVisible(true);
+            }  
+        }
+        catch(Exception ex)
+        {
+            
+        }finally
+        {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        }
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed

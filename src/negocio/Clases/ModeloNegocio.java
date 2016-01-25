@@ -22,7 +22,7 @@ public class ModeloNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Modelo entidad = new Modelo();   
              entidad.setNombre(nombre);
@@ -45,7 +45,7 @@ public class ModeloNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Modelo entidad = Obtener(id);           
              entidad.setNombre(nombre); 
@@ -68,7 +68,7 @@ public class ModeloNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Modelo entidad = Obtener(id); 
              session.delete(entidad); 
@@ -89,7 +89,7 @@ public class ModeloNegocio {
         Modelo entidad = new Modelo();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Modelo) session.createCriteria(Modelo.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -105,7 +105,7 @@ public class ModeloNegocio {
         List<Modelo> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Modelo.class);
             lista = (List<Modelo>) crit.list();
         }
@@ -121,7 +121,7 @@ public class ModeloNegocio {
         List<Modelo> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Modelo.class);
             crit.add(Expression.like("nombre", nombre, MatchMode.ANYWHERE)); 
             lista = (List<Modelo>) crit.list();

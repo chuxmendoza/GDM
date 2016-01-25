@@ -28,7 +28,7 @@ public class EscuelaNegocio {
         Escuela entidad = new Escuela();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Escuela) session.createCriteria(Escuela.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -44,7 +44,7 @@ public class EscuelaNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Escuela entidad = new Escuela();            
              entidad.setNombre(nombre);
@@ -72,7 +72,7 @@ public class EscuelaNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Escuela entidad = Obtener(id);             
              entidad.setNombre(nombre);   
@@ -101,7 +101,7 @@ public class EscuelaNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Escuela entidad = Obtener(id); 
              session.delete(entidad); 
@@ -125,7 +125,7 @@ public class EscuelaNegocio {
         String nombre = "";
         try 
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Escuela.class);
             crit.add(Expression.eq("id", id));
             crit.setProjection(Projections.projectionList()
@@ -143,7 +143,7 @@ public class EscuelaNegocio {
         List<Escuela> lista = new ArrayList<Escuela>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Escuela.class);
             lista = (List<Escuela>) crit.list();
         }
@@ -159,7 +159,7 @@ public class EscuelaNegocio {
            List<EscuelaCombo> listaCombo = new ArrayList<EscuelaCombo>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Escuela.class);
             lista = (List<Escuela>) crit.list();
             
@@ -182,7 +182,7 @@ public class EscuelaNegocio {
         List<Escuela> lista = new ArrayList<Escuela>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Escuela.class);
             crit.add(Expression.like("nombre", nombre, MatchMode.ANYWHERE));
             lista = (List<Escuela>) crit.list();

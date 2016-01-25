@@ -28,7 +28,7 @@ public class UsuarioNegocio {
         Integer id = 0;
         try
         {  
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
                     
             Criteria crit=session.createCriteria(Usuario.class);
             
@@ -54,7 +54,7 @@ public class UsuarioNegocio {
         Usuario entidad = new Usuario();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Usuario) session.createCriteria(Usuario.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -71,7 +71,7 @@ public class UsuarioNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Usuario entidad = new Usuario();
              entidad.setLogin(login);
@@ -102,7 +102,7 @@ public class UsuarioNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Usuario entidad = Obtener(id);
              entidad.setLogin(login);
@@ -133,7 +133,7 @@ public class UsuarioNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Usuario entidad = Obtener(id); 
              session.delete(entidad); 
@@ -158,7 +158,7 @@ public class UsuarioNegocio {
         Perfil perfil = Perfil.ADMIN;
         try 
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Usuario.class);
             crit.add(Expression.eq("id", id));
             crit.setProjection(Projections.projectionList()
@@ -177,7 +177,7 @@ public class UsuarioNegocio {
         String nombre = "";
         try 
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Usuario.class);
             crit.add(Expression.eq("id", id));
             crit.setProjection(Projections.projectionList()
@@ -197,7 +197,7 @@ public class UsuarioNegocio {
         Integer id = 0;
         try 
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Usuario.class);
             crit.add(Expression.eq("login", login));
             crit.setProjection(Projections.projectionList()
@@ -217,7 +217,7 @@ public class UsuarioNegocio {
         List<Usuario> lista = new ArrayList<Usuario>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Usuario.class);
             lista = (List<Usuario>) crit.list();
         }
@@ -233,7 +233,7 @@ public class UsuarioNegocio {
         List<Usuario> lista = new ArrayList<Usuario>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Usuario.class);
             crit.add(Expression.like("nombre", nombre, MatchMode.ANYWHERE));
             lista = (List<Usuario>) crit.list();

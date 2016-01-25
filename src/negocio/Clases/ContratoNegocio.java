@@ -30,7 +30,7 @@ public class ContratoNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Contrato entidad = new Contrato();  
              entidad.setEscuela(new Escuela(idEscuela));
@@ -64,7 +64,7 @@ public class ContratoNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Contrato entidad = Obtener(id);
              entidad.setEscuela(new Escuela(idEscuela));
@@ -96,7 +96,7 @@ public class ContratoNegocio {
         Contrato entidad = new Contrato(id);
                  
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();           
              session.delete(entidad); 
              
@@ -123,7 +123,24 @@ public class ContratoNegocio {
         Contrato entidad = new Contrato();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
+          entidad = (Contrato) session.createCriteria(Contrato.class).add(Expression.eq("id", id)).uniqueResult();
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getStackTrace());
+            throw ex;
+        }
+        return entidad; 
+    }
+    
+    public static Contrato ObtenerDetalle(int id)
+    { 
+        Contrato entidad = new Contrato();
+        try
+        {
+          Session session = HibernateUtils.getSession();
+          //Criteria crit = session.createCriteria(Contrato.class);
           entidad = (Contrato) session.createCriteria(Contrato.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -139,7 +156,7 @@ public class ContratoNegocio {
         List<Contrato> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Contrato.class);
             lista = (List<Contrato>) crit.list();
         }
@@ -155,7 +172,7 @@ public class ContratoNegocio {
         List<Contrato> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Contrato.class);
             crit.createAlias("especialidad", "e");
             crit.createAlias("escuela", "es");
@@ -179,7 +196,7 @@ public class ContratoNegocio {
         
         
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              session.delete(entidad); 
              tx.commit();
@@ -201,7 +218,7 @@ public class ContratoNegocio {
         
         
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              session.delete(entidad); 
              tx.commit();
@@ -226,7 +243,7 @@ public class ContratoNegocio {
         
         
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              session.delete(entidad); 
              tx.commit();
