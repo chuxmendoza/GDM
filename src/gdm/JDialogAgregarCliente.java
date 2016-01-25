@@ -29,9 +29,9 @@ public class JDialogAgregarCliente extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
      public boolean editar = false;
-     public int id = 0;
+     public Integer id = 0;
      Direccion direccion = new Direccion();
-  
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -280,8 +280,8 @@ public class JDialogAgregarCliente extends javax.swing.JDialog {
                  direccion.setCiudad(txtCiudad.getText());
                  direccion.setColonia(txtColonia.getText());
                  direccion.setNumero(txtNumero.getText());
-                 
-                    if(ClienteNegocio.Guardar(txtNombre.getText(),direccion,txtCelular.getText(),txtTelefono.getText(),txtCorreo.getText())){
+                 this.id = ClienteNegocio.Guardar(txtNombre.getText(),direccion,txtCelular.getText(),txtTelefono.getText(),txtCorreo.getText());
+                    if(id > 0){
                         JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ClienteAgregado")
                             , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloCliente"), JOptionPane.INFORMATION_MESSAGE);
                          this.DialogResult = true;

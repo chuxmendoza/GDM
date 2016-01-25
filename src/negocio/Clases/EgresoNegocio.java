@@ -26,7 +26,7 @@ public class EgresoNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Egreso entidad = new Egreso();             
              entidad.setNombre(nombre);            
@@ -54,7 +54,7 @@ public class EgresoNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Egreso entidad = Obtener(id);          
              entidad.setNombre(nombre);             
@@ -82,7 +82,7 @@ public class EgresoNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Egreso entidad = Obtener(id); 
              session.delete(entidad); 
@@ -107,7 +107,7 @@ public class EgresoNegocio {
         Egreso entidad = new Egreso();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Egreso) session.createCriteria(Egreso.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -123,7 +123,7 @@ public class EgresoNegocio {
         List<Egreso> lista = new ArrayList<Egreso>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Egreso.class);
             lista = (List<Egreso>) crit.list();
         }
@@ -139,7 +139,7 @@ public class EgresoNegocio {
         List<Egreso> lista = new ArrayList<Egreso>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Egreso.class);
             crit.add(Expression.like("nombre", nombre, MatchMode.ANYWHERE));
             lista = (List<Egreso>) crit.list();
@@ -156,7 +156,7 @@ public class EgresoNegocio {
         Integer id = 0;
         try 
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Egreso.class);
             crit.add(Expression.eq("nombre", nombre));
             crit.setProjection(Projections.projectionList()

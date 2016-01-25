@@ -6,6 +6,7 @@
 package negocio.utils;
 
 import java.io.File;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -15,11 +16,13 @@ import org.hibernate.cfg.Configuration;
  */
 public class HibernateUtils {
    private static final SessionFactory sessionFactory;
+   private static Session session;
     static {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
             sessionFactory = new Configuration().configure(new File("src/hibernate.cfg.xml"))
                     .buildSessionFactory();
+            session = sessionFactory.openSession();
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
             System.err.println("Initial SessionFactory creation failed." + ex);
@@ -29,5 +32,21 @@ public class HibernateUtils {
 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+      
+    public static Session getSession() { 
+        try
+        {
+            if (session != null && session.isOpen()) {
+                return session;
+            } else {
+                session = getSessionFactory().openSession();
+                return session; 
+            }
+        }
+        catch(Exception ex)
+        {
+            throw ex;
+        }
     }
 }

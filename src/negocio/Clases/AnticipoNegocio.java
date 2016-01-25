@@ -28,7 +28,7 @@ public class AnticipoNegocio {
         Anticipo entidad = new Anticipo();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Anticipo) session.createCriteria(Anticipo.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -45,7 +45,7 @@ public class AnticipoNegocio {
         ContratoCliente contratoCliente = ContratoClienteNegocio.Obtener(idContratoCliente);
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Anticipo entidad = new Anticipo();            
              entidad.setNombre(nombre);
@@ -85,7 +85,7 @@ public class AnticipoNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Anticipo entidad = Obtener(id);             
               entidad.setNombre(nombre);
@@ -118,7 +118,7 @@ public class AnticipoNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Anticipo entidad = Obtener(id); 
              session.delete(entidad); 
@@ -142,7 +142,7 @@ public class AnticipoNegocio {
         String nombre = "";
         try 
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Anticipo.class);
             crit.add(Expression.eq("id", id));
             crit.setProjection(Projections.projectionList()
@@ -160,7 +160,7 @@ public class AnticipoNegocio {
         List<Anticipo> lista = new ArrayList<Anticipo>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Anticipo.class);
             lista = (List<Anticipo>) crit.list();
         }
@@ -176,7 +176,7 @@ public class AnticipoNegocio {
         List<Anticipo> lista = new ArrayList<Anticipo>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Anticipo.class);
             crit.add(Expression.like("nombre", nombre, MatchMode.ANYWHERE));
             lista = (List<Anticipo>) crit.list();

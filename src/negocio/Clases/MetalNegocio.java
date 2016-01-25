@@ -22,7 +22,7 @@ public class MetalNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Metal entidad = new Metal();   
              entidad.setNombre(nombre);
@@ -44,7 +44,7 @@ public class MetalNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Metal entidad = Obtener(id);           
              entidad.setNombre(nombre); 
@@ -66,7 +66,7 @@ public class MetalNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Metal entidad = Obtener(id); 
              session.delete(entidad); 
@@ -87,7 +87,7 @@ public class MetalNegocio {
         Metal entidad = new Metal();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Metal) session.createCriteria(Metal.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -103,7 +103,7 @@ public class MetalNegocio {
         List<Metal> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Metal.class);
             lista = (List<Metal>) crit.list();
         }
@@ -119,7 +119,7 @@ public class MetalNegocio {
         List<Metal> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Metal.class);
             crit.add(Expression.like("nombre", nombre, MatchMode.ANYWHERE)); 
             lista = (List<Metal>) crit.list();

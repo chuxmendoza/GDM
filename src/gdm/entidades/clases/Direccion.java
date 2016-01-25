@@ -87,5 +87,11 @@ public class Direccion {
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
+    
+    @Override
+    public String toString()
+    {
+        return calle + numero + colonia + ciudad; 
+    }
      //</editor-fold>
 }
