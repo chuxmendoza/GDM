@@ -24,13 +24,14 @@ import org.hibernate.transform.Transformers;
 public class ContratoClienteNegocio {
     
     
-    public static Boolean Guardar(int folio, int idModelo, boolean reconocimiento, Agradecimiento agradecimiento, String mensaje, boolean fotoPanoramica,
+    public static Boolean Guardar(int idContrato,int folio, int idModelo, boolean reconocimiento, Agradecimiento agradecimiento, String mensaje, boolean fotoPanoramica,
             boolean fotoMisa, boolean fotoEstudio, Anillo anillo, boolean rentaToga, boolean misa, boolean baile, int mesaExtra, int fotosExtra, 
             boolean triptico, double precio, Date fechaEntregaPaquete, Date fechaEntregaDatos, Date fechaLimitePago, String contratoImagen, 
-            List<Anticipo> anticipos, Date fechaContrato, String comentarios)
+            Date fechaContrato, String comentarios)
     {
         boolean realizado = false;
         Transaction tx = null; 
+        Contrato contrato = ContratoNegocio.Obtener(idContrato);
         try
         (Session session = HibernateUtils.getSessionFactory().openSession()) {    
              tx = session.beginTransaction();
@@ -55,18 +56,20 @@ public class ContratoClienteNegocio {
              entidad.setFechaEntregaDatos(fechaEntregaDatos);
              entidad.setFechaLimitePago(fechaLimitePago);
              entidad.setContratoImagen(contratoImagen);
-             entidad.setAnticipos(anticipos);
+//             entidad.setAnticipos(anticipos);
              entidad.setFechaContrato(fechaContrato);            
              entidad.setComentarios(comentarios);
-             double total = 0;
-             boolean liquidado = false;
-             for(Anticipo a : anticipos)
-             {
-                 total = total + a.getCantidad();
-             }
-             if (entidad.getPrecio() == total)
-                 liquidado = true;
-             entidad.setLiquidado(liquidado);
+             double total = 0;                      
+             tx.commit();
+             realizado = true;
+//             boolean liquidado = false;
+//             for(Anticipo a : anticipos)
+//             {
+//                 total = total + a.getCantidad();
+//             }
+//             if (entidad.getPrecio() == total)
+//                 liquidado = true;
+             entidad.setLiquidado(false);
              session.save(entidad);
              tx.commit();
              realizado = true;

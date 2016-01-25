@@ -11,11 +11,16 @@ import gdm.entidades.clases.Common;
 import gdm.entidades.clases.FotoPanoramica;
 import gdm.entidades.clases.Metal;
 import gdm.entidades.clases.Modelo;
+import gdm.filechooser.ImageFileView;
+import gdm.filechooser.ImageFilter;
+import gdm.filechooser.ImagePreview;
 import java.awt.Cursor;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import negocio.Clases.AgradecimientoNegocio;
 import negocio.Clases.ContratoClienteNegocio;
 import negocio.Clases.MetalNegocio;
@@ -137,7 +142,9 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
         jLabel19 = new javax.swing.JLabel();
         dateEntregaPaquete = new org.jdesktop.swingx.JXDatePicker();
         jPanel14 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
+        imgFoto = new javax.swing.JLabel();
+        btnAgregarImagen = new javax.swing.JButton();
+        btnRetirarImagen = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
 
         jTextField12.setText("jTextField12");
@@ -917,23 +924,46 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Fechas de Entrega ", jPanel6);
 
-        jLabel21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imgFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        btnAgregarImagen.setText("Seleccionar imagen");
+        btnAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarImagenActionPerformed(evt);
+            }
+        });
+
+        btnRetirarImagen.setText("Remover imagen");
+        btnRetirarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetirarImagenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(215, 215, 215)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addGap(177, 177, 177)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(btnAgregarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRetirarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imgFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addGap(75, 75, 75)
+                .addComponent(imgFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarImagen)
+                    .addComponent(btnRetirarImagen))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Imagen del Contrato", jPanel14);
@@ -1066,12 +1096,15 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                    agradecimiento= a;
                 }
             }
-
-          if(ContratoClienteNegocio.Guardar(txtFolio.getText(),modelo,rbReconocimiento.isSelected() ,agradecimiento,txtAgradecimiento.getText(),
-                  rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),metal,rbRentaToga.isSelected(),
-                  rbMisa.isSelected(),rbBaile.isSelected(),spMesaExtra.getValue(),spFotosExtra.getValue(),rbTriptico.isSelected(),
-                  Double.parseDouble(txtPrecio.getText()),dateFechaContrato.getDate(),dateEntregaDatos.getDate(),dateFechaContrato.getDate(),
-                  dateLimitePago.getDate(),)){
+              
+//   
+//           
+//    
+          if(ContratoClienteNegocio.Guardar(Integer.parseInt(txtFolio.getText()),modelo.getId(),rbReconocimiento.isSelected(),agradecimiento,txtAgradecimiento.getText(),
+                  rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
+                  rbMisa.isSelected(),rbBaile.isSelected(),Integer.parseInt(spMesaExtra.getValue().toString()),Integer.parseInt(spFotosExtra.getValue().toString()),rbTriptico.isSelected(),
+                  Double.parseDouble(txtPrecio.getText()),dateEntregaPaquete.getDate(),dateEntregaDatos.getDate(),dateLimitePago.getDate(),
+                 nombreArchivo,dateFechaContrato.getDate(),txtComentarios.getText())){
                
            }
                 
@@ -1084,13 +1117,70 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+        JFileChooser fc= null;
+        String rutaArchivo = null;
+        String nombreArchivo = null;
+    
+    private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            if (fc == null) {
+                fc = new JFileChooser();
+
+                //Add a custom file filter and disable the default
+                //(Accept All) file filter.
+                fc.addChoosableFileFilter(new ImageFilter());
+                fc.setAcceptAllFileFilterUsed(false);
+
+                //Add custom icons for file types.
+                fc.setFileView(new ImageFileView());
+
+                //Add the preview pane.
+                fc.setAccessory(new ImagePreview(fc));
+            }
+
+            //Show it.
+            int returnVal = fc.showDialog(this, "Buscar");
+
+            //Process the results.
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //TODO something with the name from the fil using file.getName()
+                ImageIcon icon = new ImageIcon(((new ImageIcon(file.getPath())).getImage())
+                    .getScaledInstance(297, 233, java.awt.Image.SCALE_SMOOTH));
+                imgFoto.setIcon(icon);
+                rutaArchivo = file.getPath();
+                nombreArchivo = file.getName();
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+        finally
+        {
+            //Reset the file chooser for the next time it's shown.
+            fc.setSelectedFile(null);
+        }
+    }//GEN-LAST:event_btnAgregarImagenActionPerformed
+
+    private void btnRetirarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarImagenActionPerformed
+        // TODO add your handling code here:
+        imgFoto.setIcon(null);
+        rutaArchivo = null;
+        nombreArchivo = null;
+    }//GEN-LAST:event_btnRetirarImagenActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregarAnticipo;
+    private javax.swing.JButton btnAgregarImagen;
     private javax.swing.JButton btnEditarAnticipo;
     private javax.swing.JButton btnEliminarAnticipo;
+    private javax.swing.JButton btnRetirarImagen;
     private gdm.presentacion.CustomComboBox comboAgradecimiento;
     private javax.swing.JComboBox comboDirigido;
     private gdm.presentacion.CustomComboBox comboMaterial;
@@ -1099,6 +1189,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
     private org.jdesktop.swingx.JXDatePicker dateEntregaPaquete;
     private org.jdesktop.swingx.JXDatePicker dateFechaContrato;
     private org.jdesktop.swingx.JXDatePicker dateLimitePago;
+    private javax.swing.JLabel imgFoto;
     private javax.swing.JLabel imgModelo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -1115,7 +1206,6 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
