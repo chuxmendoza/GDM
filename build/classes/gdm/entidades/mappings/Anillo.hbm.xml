@@ -10,7 +10,7 @@
   <property name="g" type="double" column="g" /> 
   <property name="k" type="double" column="k" /> 
  <many-to-one name="metal" column="idMetal" 
-            class="gdm.entidades.clases.Metal" cascade="save-update" />
+            class="gdm.entidades.clases.Metal" />
   
     </class>
 </hibernate-mapping>

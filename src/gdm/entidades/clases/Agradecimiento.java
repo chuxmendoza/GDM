@@ -10,6 +10,14 @@ package gdm.entidades.clases;
  * @author Chuy
  */
 public class Agradecimiento {
+
+    public Agradecimiento() {
+    }
+    public Agradecimiento(int id){
+        this.id = id;
+    }
+    
+    
     private int id;
     private String clave;
     private String mensaje;

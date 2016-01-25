@@ -23,7 +23,7 @@ public class AgradecimientoNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Agradecimiento entidad = new Agradecimiento();             
              entidad.setClave(clave);
@@ -47,7 +47,7 @@ public class AgradecimientoNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Agradecimiento entidad = Obtener(id);          
              entidad.setClave(clave);             
@@ -70,7 +70,7 @@ public class AgradecimientoNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Agradecimiento entidad = Obtener(id); 
              session.delete(entidad); 
@@ -91,7 +91,7 @@ public class AgradecimientoNegocio {
         Agradecimiento entidad = new Agradecimiento();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Agradecimiento) session.createCriteria(Agradecimiento.class)
                   .add(Expression.eq("id", id)).uniqueResult();
         }
@@ -108,7 +108,7 @@ public class AgradecimientoNegocio {
         List<Agradecimiento> lista = new ArrayList<Agradecimiento>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Agradecimiento.class);
             lista = (List<Agradecimiento>) crit.list();
         }
@@ -124,7 +124,7 @@ public class AgradecimientoNegocio {
         List<Agradecimiento> lista = new ArrayList<Agradecimiento>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Agradecimiento.class);
             crit.add(Expression.like("clave", clave, MatchMode.ANYWHERE));
             lista = (List<Agradecimiento>) crit.list();
@@ -141,7 +141,7 @@ public class AgradecimientoNegocio {
         boolean edicion = false; 
         try 
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Agradecimiento.class);
             crit.add(Expression.eq("id", id));
 //            crit.setProjection(Projections.projectionList()

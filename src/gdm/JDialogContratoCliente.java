@@ -18,7 +18,7 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+    public int idContrato = 0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +30,7 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblContratos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         Abonar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -43,9 +43,9 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         jPanel1.setMinimumSize(new java.awt.Dimension(1134, 650));
         jPanel1.setPreferredSize(new java.awt.Dimension(1134, 650));
 
-        jTable1.getTableHeader().setFont(new java.awt.Font("Euphemia", 0, 18));
-        jTable1.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblContratos.getTableHeader().setFont(new java.awt.Font("Euphemia", 0, 18));
+        tblContratos.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
+        tblContratos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -64,69 +64,74 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jTable1.setRowHeight(23);
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(250);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(250);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(250);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(4).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(5).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(7).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(8).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(8).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(9).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(9).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(9).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(10).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(10).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(11).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(11).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(12).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(12).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(12).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(13).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(13).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(13).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(14).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(14).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(14).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(15).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(15).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(15).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(16).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(16).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(16).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(17).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(17).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(17).setMaxWidth(100);
+        tblContratos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tblContratos.setRowHeight(23);
+        tblContratos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(tblContratos);
+        if (tblContratos.getColumnModel().getColumnCount() > 0) {
+            tblContratos.getColumnModel().getColumn(0).setMinWidth(0);
+            tblContratos.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblContratos.getColumnModel().getColumn(0).setMaxWidth(0);
+            tblContratos.getColumnModel().getColumn(1).setMinWidth(250);
+            tblContratos.getColumnModel().getColumn(1).setPreferredWidth(250);
+            tblContratos.getColumnModel().getColumn(1).setMaxWidth(250);
+            tblContratos.getColumnModel().getColumn(2).setMinWidth(50);
+            tblContratos.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tblContratos.getColumnModel().getColumn(2).setMaxWidth(50);
+            tblContratos.getColumnModel().getColumn(3).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(3).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(4).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(4).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(5).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(5).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(5).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(6).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(6).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(6).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(7).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(7).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(7).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(8).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(8).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(8).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(9).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(9).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(9).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(10).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(10).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(10).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(11).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(11).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(11).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(12).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(12).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(12).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(13).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(13).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(13).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(14).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(14).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(14).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(15).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(15).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(15).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(16).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(16).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(16).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(17).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(17).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(17).setMaxWidth(100);
         }
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar1.png"))); // NOI18N
         jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         Abonar.setText("Abonar");
 
@@ -167,11 +172,12 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
                 .addContainerGap(110, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Abonar)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton3)
+                        .addComponent(jButton4)))
                 .addGap(41, 41, 41))
         );
 
@@ -196,8 +202,13 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         JDialogAgregarContratoCliente cc = new JDialogAgregarContratoCliente(null, rootPaneCheckingEnabled);
+        cc.idContrato = idContrato;
         cc.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
 
@@ -208,6 +219,6 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblContratos;
     // End of variables declaration//GEN-END:variables
 }

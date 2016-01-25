@@ -23,7 +23,7 @@ public class AnilloNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Anillo entidad = new Anillo();  
              entidad.setMetal(new Metal(idMetal));
@@ -47,7 +47,7 @@ public class AnilloNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Anillo entidad = Obtener(id);          
              entidad.setMetal(new Metal(idMetal));
@@ -71,7 +71,7 @@ public class AnilloNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Anillo entidad = Obtener(id); 
              session.delete(entidad); 
@@ -92,7 +92,7 @@ public class AnilloNegocio {
         Anillo entidad = new Anillo();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Anillo) session.createCriteria(Anillo.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -108,7 +108,7 @@ public class AnilloNegocio {
         List<Anillo> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Anillo.class);
             lista = (List<Anillo>) crit.list();
         }
@@ -124,7 +124,7 @@ public class AnilloNegocio {
         List<Anillo> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Anillo.class);
             crit.createAlias("metal", "m");
             crit.add(Expression.like("m.nombre", metal, MatchMode.ANYWHERE));
