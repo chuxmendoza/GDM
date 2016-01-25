@@ -23,14 +23,14 @@ import org.hibernate.criterion.Projections;
  */
 public class ClienteNegocio {
            
-     public static Boolean Guardar(String nombre, Direccion direccion,String celular, String telefono,String correo)
+     public static int Guardar(String nombre, Direccion direccion,String celular, String telefono,String correo)
     {
-        boolean realizado = false;
+        int realizado = 0;
         Transaction tx = null; 
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Cliente entidad = new Cliente();             
              entidad.setNombre(nombre);         
@@ -39,9 +39,9 @@ public class ClienteNegocio {
              entidad.setCorreo(correo);
              entidad.setTelefono(telefono);
                
-             session.save(entidad); 
+             session.save(entidad);  
              tx.commit();
-             realizado = true;
+             realizado = entidad.getId();
         }
         catch (Exception ex) 
         {
@@ -64,7 +64,7 @@ public class ClienteNegocio {
         Session session = null;
         try
         {    
-             session =  HibernateUtils.getSessionFactory().openSession();    
+             session =  HibernateUtils.getSession();    
              tx = session.beginTransaction();                
              entidad.setNombre(nombre);
              entidad.setDireccion(direccion);
@@ -93,7 +93,7 @@ public class ClienteNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              Cliente entidad = new Cliente(id); 
              session.delete(entidad); 
@@ -116,7 +116,7 @@ public class ClienteNegocio {
         Cliente entidad = new Cliente();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Cliente) session.createCriteria(Cliente.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -135,7 +135,7 @@ public class ClienteNegocio {
         List<Cliente> lista = new ArrayList<Cliente>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Cliente.class);
             lista = (List<Cliente>) crit.list();
         }
@@ -151,7 +151,7 @@ public class ClienteNegocio {
         List<Cliente> lista = new ArrayList<Cliente>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Cliente.class);
             crit.add(Expression.like("nombre", nombre, MatchMode.ANYWHERE));
             lista = (List<Cliente>) crit.list();
@@ -168,7 +168,7 @@ public class ClienteNegocio {
         Integer id = 0;
         try 
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Cliente.class);
             crit.add(Expression.eq("nombre", nombre));
             crit.setProjection(Projections.projectionList()

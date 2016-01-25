@@ -24,21 +24,23 @@ import org.hibernate.transform.Transformers;
 public class ContratoClienteNegocio {
     
     
-    public static Boolean Guardar(int folio, int idModelo, boolean reconocimiento, Agradecimiento agradecimiento, String mensaje, boolean fotoPanoramica,
+    public static Boolean Guardar(int idContrato, 
+            int folio, int idModelo, boolean reconocimiento, int agradecimiento, String mensaje, boolean fotoPanoramica,
             boolean fotoMisa, boolean fotoEstudio, Anillo anillo, boolean rentaToga, boolean misa, boolean baile, int mesaExtra, int fotosExtra, 
             boolean triptico, double precio, Date fechaEntregaPaquete, Date fechaEntregaDatos, Date fechaLimitePago, String contratoImagen, 
-            List<Anticipo> anticipos, Date fechaContrato, String comentarios)
+            Date fechaContrato, String comentarios)
     {
         boolean realizado = false;
         Transaction tx = null; 
+        Contrato contrato = ContratoNegocio.Obtener(idContrato);
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              ContratoCliente entidad = new ContratoCliente();
              entidad.setFolio(folio);
              entidad.setModelo(new Modelo(idModelo));
              entidad.setReconocimiento(reconocimiento);
-             entidad.setAgradecimiento(agradecimiento);
+             entidad.setAgradecimiento(new Agradecimiento(agradecimiento));
              entidad.setMensaje(mensaje);
              entidad.setFotoPanoramica(fotoPanoramica);
              entidad.setFotoMisa(fotoMisa);
@@ -55,19 +57,30 @@ public class ContratoClienteNegocio {
              entidad.setFechaEntregaDatos(fechaEntregaDatos);
              entidad.setFechaLimitePago(fechaLimitePago);
              entidad.setContratoImagen(contratoImagen);
-             entidad.setAnticipos(anticipos);
+             //entidad.setAnticipos(anticipos);
              entidad.setFechaContrato(fechaContrato);            
              entidad.setComentarios(comentarios);
-             double total = 0;
+             /*double total = 0;
              boolean liquidado = false;
              for(Anticipo a : anticipos)
              {
                  total = total + a.getCantidad();
              }
              if (entidad.getPrecio() == total)
-                 liquidado = true;
-             entidad.setLiquidado(liquidado);
-             session.save(entidad);
+                 liquidado = true;*/
+             entidad.setLiquidado(false);
+             //session.save(entidad);
+             if(contrato.getContratoCliente() == null)
+             {
+                List<ContratoCliente> lista = new ArrayList();
+                lista.add(entidad);
+                contrato.setContratoCliente(lista);
+             }
+             else
+             {               
+                contrato.getContratoCliente().add(entidad);             
+             }
+             session.update(contrato);
              tx.commit();
              realizado = true;
         }
@@ -88,7 +101,7 @@ public class ContratoClienteNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              ContratoCliente entidad = Obtener(id);
              entidad.setFolio(folio);
@@ -132,7 +145,7 @@ public class ContratoClienteNegocio {
         boolean realizado = false;
         Transaction tx = null; 
         try
-        (Session session = HibernateUtils.getSessionFactory().openSession()) {    
+        (Session session = HibernateUtils.getSession()) {    
              tx = session.beginTransaction();
              ContratoCliente entidad = Obtener(id); 
              session.delete(entidad); 
@@ -153,7 +166,7 @@ public class ContratoClienteNegocio {
         ContratoCliente entidad = new ContratoCliente();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (ContratoCliente) session.createCriteria(ContratoCliente.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -162,14 +175,13 @@ public class ContratoClienteNegocio {
         }
         return entidad; 
     }
-    
-    
+     
     public static List<ContratoCliente> Listado()
     {
         List<ContratoCliente> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(ContratoCliente.class);
             lista = (List<ContratoCliente>) crit.list();
         }
@@ -185,7 +197,7 @@ public class ContratoClienteNegocio {
         List<ContratoCliente> lista = new ArrayList<>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Contrato.class); 
             crit.add(Expression.eq("id", idContrato));
             crit.createAlias("cliente", "c");

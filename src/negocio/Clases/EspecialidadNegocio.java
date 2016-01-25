@@ -26,7 +26,7 @@ public class EspecialidadNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Especialidad entidad = new Especialidad();             
              entidad.setNombre(nombre);            
@@ -54,7 +54,7 @@ public class EspecialidadNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Especialidad entidad = Obtener(id);          
              entidad.setNombre(nombre);             
@@ -82,7 +82,7 @@ public class EspecialidadNegocio {
         Session session = null;
         try
         {
-             session = HibernateUtils.getSessionFactory().openSession();    
+             session = HibernateUtils.getSession();    
              tx = session.beginTransaction();
              Especialidad entidad = Obtener(id); 
              session.delete(entidad); 
@@ -107,7 +107,7 @@ public class EspecialidadNegocio {
         Especialidad entidad = new Especialidad();
         try
         {
-          Session session = HibernateUtils.getSessionFactory().openSession();
+          Session session = HibernateUtils.getSession();
           entidad = (Especialidad) session.createCriteria(Especialidad.class).add(Expression.eq("id", id)).uniqueResult();
         }
         catch(Exception ex)
@@ -123,7 +123,7 @@ public class EspecialidadNegocio {
         List<Especialidad> lista = new ArrayList<Especialidad>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Especialidad.class);
             lista = (List<Especialidad>) crit.list();
         }
@@ -139,7 +139,7 @@ public class EspecialidadNegocio {
         List<Especialidad> lista = new ArrayList<Especialidad>();
         try
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Especialidad.class);
             crit.add(Expression.like("nombre", nombre, MatchMode.ANYWHERE));
             lista = (List<Especialidad>) crit.list();
@@ -156,7 +156,7 @@ public class EspecialidadNegocio {
         Integer id = 0;
         try 
         {
-            Session session = HibernateUtils.getSessionFactory().openSession();
+            Session session = HibernateUtils.getSession();
             Criteria crit = session.createCriteria(Especialidad.class);
             crit.add(Expression.eq("nombre", nombre));
             crit.setProjection(Projections.projectionList()
