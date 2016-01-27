@@ -6,8 +6,10 @@
       <column name="id"/>
       <generator class="identity"/>
     </id>
+    
  <many-to-one name="cliente" column="idCliente" 
             class="gdm.entidades.clases.Cliente" />
+            
   <property name="folio" type="int" column="folio" />
   <many-to-one name="modelo" column="idModelo" 
             class="gdm.entidades.clases.Modelo" />

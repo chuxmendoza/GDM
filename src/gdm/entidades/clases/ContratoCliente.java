@@ -15,6 +15,7 @@ import java.util.List;
 public class ContratoCliente {
     private int id;
     private int folio;
+    private Cliente cliente;
     private Modelo modelo;
     private boolean reconocimiento;
     private Agradecimiento agradecimiento;
@@ -390,5 +391,19 @@ public class ContratoCliente {
         this.liquidado = liquidado;
     }
     //</editor-fold>
+
+    /**
+     * @return the cliente
+     */
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
  
 }

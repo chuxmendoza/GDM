@@ -3,6 +3,7 @@ package negocio.Clases;
 import gdm.entidades.clases.Agradecimiento;
 import gdm.entidades.clases.Anillo;
 import gdm.entidades.clases.Anticipo;
+import gdm.entidades.clases.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 import negocio.utils.HibernateUtils; 
@@ -27,6 +28,7 @@ public class ContratoClienteNegocio {
     
     
     public static Boolean Guardar(int idContrato, 
+            int idCliente,
             int folio, int idModelo, boolean reconocimiento, int agradecimiento, String mensaje, boolean fotoPanoramica,
             boolean fotoMisa, boolean fotoEstudio, Anillo anillo, boolean rentaToga, boolean misa, boolean baile, int mesaExtra, int fotosExtra, 
             boolean triptico, double precio, Date fechaEntregaPaquete, Date fechaEntregaDatos, Date fechaLimitePago, String contratoImagen, 
@@ -40,6 +42,7 @@ public class ContratoClienteNegocio {
              tx = session.beginTransaction();
              ContratoCliente entidad = new ContratoCliente();
              entidad.setFolio(folio);
+             entidad.setCliente(new Cliente(idCliente));
              entidad.setModelo(new Modelo(idModelo));
              entidad.setReconocimiento(reconocimiento);
              entidad.setAgradecimiento(new Agradecimiento(agradecimiento));

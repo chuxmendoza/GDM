@@ -6,8 +6,10 @@
 package gdm;
 
 import gdm.entidades.clases.Anticipo;
+import gdm.entidades.clases.ContratoCliente;
 import java.awt.Cursor;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import negocio.Clases.ContratoClienteNegocio;
@@ -26,6 +28,7 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         initComponents();
     }
     public int idContrato = 0;
+    private List<ContratoCliente> contratos;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +47,11 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setMaximumSize(new java.awt.Dimension(1134, 650));
@@ -54,17 +62,17 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         tblContratos.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         tblContratos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Nombre completo", "Triptico", "Modelo", "Reconocimiento", "Agradecimiento", "Dirigido a:", "Foto panorámica", "Foto misa", "Foto estudio", "Material de anillos", "kilates", "Gramos", "Renta de toga", "Misa", "Mesa extra", "Fotos extra", "Precio"
+                "id", "Folio", "Nombre completo", "Modelo", "Triptico", "Reconocimiento", "Agradecimiento", "Dirigido a:", "Foto panorámica", "Foto estudio", "Foto misa", "Material de anillos", "kilates", "Gramos", "Renta de toga", "Misa", "Baile", "Mesa extra", "Fotos extra", "Triptico", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -79,18 +87,15 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
             tblContratos.getColumnModel().getColumn(0).setMinWidth(0);
             tblContratos.getColumnModel().getColumn(0).setPreferredWidth(0);
             tblContratos.getColumnModel().getColumn(0).setMaxWidth(0);
-            tblContratos.getColumnModel().getColumn(1).setMinWidth(250);
-            tblContratos.getColumnModel().getColumn(1).setPreferredWidth(250);
-            tblContratos.getColumnModel().getColumn(1).setMaxWidth(250);
-            tblContratos.getColumnModel().getColumn(2).setMinWidth(50);
-            tblContratos.getColumnModel().getColumn(2).setPreferredWidth(50);
-            tblContratos.getColumnModel().getColumn(2).setMaxWidth(50);
+            tblContratos.getColumnModel().getColumn(1).setMinWidth(80);
+            tblContratos.getColumnModel().getColumn(1).setPreferredWidth(80);
+            tblContratos.getColumnModel().getColumn(1).setMaxWidth(80);
+            tblContratos.getColumnModel().getColumn(2).setMinWidth(250);
+            tblContratos.getColumnModel().getColumn(2).setPreferredWidth(250);
+            tblContratos.getColumnModel().getColumn(2).setMaxWidth(250);
             tblContratos.getColumnModel().getColumn(3).setMinWidth(100);
             tblContratos.getColumnModel().getColumn(3).setPreferredWidth(100);
             tblContratos.getColumnModel().getColumn(3).setMaxWidth(100);
-            tblContratos.getColumnModel().getColumn(4).setMinWidth(100);
-            tblContratos.getColumnModel().getColumn(4).setPreferredWidth(100);
-            tblContratos.getColumnModel().getColumn(4).setMaxWidth(100);
             tblContratos.getColumnModel().getColumn(5).setMinWidth(100);
             tblContratos.getColumnModel().getColumn(5).setPreferredWidth(100);
             tblContratos.getColumnModel().getColumn(5).setMaxWidth(100);
@@ -124,12 +129,18 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
             tblContratos.getColumnModel().getColumn(15).setMinWidth(100);
             tblContratos.getColumnModel().getColumn(15).setPreferredWidth(100);
             tblContratos.getColumnModel().getColumn(15).setMaxWidth(100);
-            tblContratos.getColumnModel().getColumn(16).setMinWidth(100);
-            tblContratos.getColumnModel().getColumn(16).setPreferredWidth(100);
-            tblContratos.getColumnModel().getColumn(16).setMaxWidth(100);
             tblContratos.getColumnModel().getColumn(17).setMinWidth(100);
             tblContratos.getColumnModel().getColumn(17).setPreferredWidth(100);
             tblContratos.getColumnModel().getColumn(17).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(18).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(18).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(18).setMaxWidth(100);
+            tblContratos.getColumnModel().getColumn(19).setMinWidth(50);
+            tblContratos.getColumnModel().getColumn(19).setPreferredWidth(50);
+            tblContratos.getColumnModel().getColumn(19).setMaxWidth(50);
+            tblContratos.getColumnModel().getColumn(20).setMinWidth(100);
+            tblContratos.getColumnModel().getColumn(20).setPreferredWidth(100);
+            tblContratos.getColumnModel().getColumn(20).setMaxWidth(100);
         }
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar1.png"))); // NOI18N
@@ -249,6 +260,12 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_AbonarActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+          cargarContratos();
+
+    }//GEN-LAST:event_formWindowOpened
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -260,4 +277,50 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblContratos;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarContratos() {
+      
+       DefaultTableModel mod = (DefaultTableModel)tblContratos.getModel();
+        while(mod.getRowCount() > 0)
+            mod.removeRow(0);
+        
+        contratos = ContratoClienteNegocio.Listado();
+        for(ContratoCliente contrato : contratos){
+            int id = contrato.getId();
+            String nombre= contrato.getCliente().getNombre();
+            int folio = contrato.getFolio();
+            boolean triptico= contrato.isTriptico();
+            String modelo= contrato.getModelo().getNombre();
+            boolean reconocimiento= contrato.isReconocimiento();
+            String agradecimiento= contrato.getAgradecimiento().getClave();
+            boolean fotoPanoramica= contrato.getFotoPanoramica();
+            boolean fotoEstudio= contrato.isFotoEstudio();
+            boolean fotoMisa= contrato.isFotoMisa();
+            String anillo= contrato.getAnillo().getMetal().getNombre();
+            double k= contrato.getAnillo().getK();
+            double g= contrato.getAnillo().getG();
+            boolean rentaToga = contrato.isRentaToga();
+            boolean misa= contrato.isMisa();
+            boolean baile = contrato.isBaile();
+            int mesaExtra = contrato.getMesaExtra();
+            int fotosExtra= contrato.getFotosExtra();
+            double precio = contrato.getPrecio();
+            Date fechaEntregaPaquete = contrato.getFechaEntregaPaquete();
+            Date fechaEntregaDatos= contrato.getFechaEntregaDatos();
+            Date fechaLimitePago=contrato.getFechaLimitePago();
+            Date fechaContrato= contrato.getFechaContrato();
+            String Comentarios = contrato.getComentarios();
+            
+            
+           
+                                           
+            mod.addRow(new Object[] {id,folio,nombre, modelo ,triptico,reconocimiento ,agradecimiento ,fotoPanoramica,fotoEstudio,
+            fotoMisa,anillo,k,g,rentaToga,misa,baile,mesaExtra,fotosExtra,fechaContrato,precio,Comentarios,
+            fechaEntregaPaquete,fechaEntregaDatos,fechaLimitePago});
+        }
+        
+        tblContratos.setModel(mod);
+    }   
+    
+
 }

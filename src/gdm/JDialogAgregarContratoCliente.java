@@ -1106,7 +1106,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         try{
-            //            if(!editar){
+            //            if(!editar){                       
             modelo.setId(Integer.parseInt(comboModelo.getSelectedValue().toString()));
             modelo.setImagen(comboModelo.getSelectedValue().toString());
             modelo.setNombre(comboModelo.getSelectedValue().toString());      
@@ -1133,7 +1133,16 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                    agradecimiento= a;
                 }
             } 
+            int idCliente = cliente.getId();
+            if(idCliente<=0){
+                
+                JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloCliente")
+                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloSeleccion"), JOptionPane.INFORMATION_MESSAGE);
+
+             return;   
+            }
           if(ContratoClienteNegocio.Guardar(idContrato, 
+                  idCliente,
                   Integer.parseInt(txtFolio.getText()),modelo.getId(),rbReconocimiento.isSelected() ,agradecimiento.getId(),txtAgradecimiento.getText(),
                   rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
                   rbMisa.isSelected(),rbBaile.isSelected(),Integer.parseInt(spMesaExtra.getValue().toString()), Integer.parseInt(spFotosExtra.getValue().toString()),rbTriptico.isSelected(),
