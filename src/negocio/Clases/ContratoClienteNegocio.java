@@ -15,6 +15,8 @@ import gdm.entidades.clases.Contrato;
 import gdm.entidades.clases.ContratoCliente;
 import gdm.entidades.clases.Modelo;
 import java.util.Date;
+import org.hibernate.Query;
+import org.hibernate.criterion.Projections;
 import org.hibernate.transform.Transformers;
 
 /**
@@ -174,6 +176,23 @@ public class ContratoClienteNegocio {
             throw ex;
         }
         return entidad; 
+    }
+    
+    public static List<Anticipo> ListarAbonos(int id)
+    {  
+        List<Anticipo> lista = new ArrayList();
+        try
+        {
+            Session session = HibernateUtils.getSession();
+            String hql = "SELECT CC.anticipos FROM ContratoCliente AS CC WHERE CC.id = :id";
+            Query query = session.createQuery(hql).setParameter("id", id);
+            lista = (List<Anticipo>)query.list();
+        }
+        catch(Exception ex)
+        {
+            throw ex;
+        }
+        return lista; 
     }
      
     public static List<ContratoCliente> Listado()

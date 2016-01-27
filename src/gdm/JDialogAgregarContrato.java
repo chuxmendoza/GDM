@@ -600,7 +600,7 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
            comboEspecialidad.setSelectedIndex(-1);
             
         }catch(Exception e){
-            
+                System.out.println(e);
         }
                if(editar){
             cargarEdicion();

@@ -1106,7 +1106,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         try{
-            
+            //            if(!editar){
             modelo.setId(Integer.parseInt(comboModelo.getSelectedValue().toString()));
             modelo.setImagen(comboModelo.getSelectedValue().toString());
             modelo.setNombre(comboModelo.getSelectedValue().toString());      
@@ -1140,9 +1140,34 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                   Double.parseDouble(txtPrecio.getText()), dateEntregaPaquete.getDate(),dateEntregaDatos.getDate(),dateLimitePago.getDate(), nombreArchivo,
                   dateFechaContrato.getDate(), txtComentarios.getText().trim())){
                
-           }
+           JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ContratoAgregado")
+                            , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloContrato"), JOptionPane.INFORMATION_MESSAGE); 
+                      
+           }else{
+                 JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ErrorMensaje")
+                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloError"), JOptionPane.INFORMATION_MESSAGE);
+
+          
+//          }else{
+//                //Editar un Contrato Cliente
+//                if(ContratoClienteNegocio.Editar(id, Integer.parseInt(txtFolio.getText()),modelo.getId(),rbReconocimiento.isSelected(),agradecimiento.getId(),txtAgradecimiento.getText(),
+//                  rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
+//                  rbMisa.isSelected(),rbBaile.isSelected(),Integer.parseInt(spMesaExtra.getValue().toString()), Integer.parseInt(spFotosExtra.getValue().toString()),rbTriptico.isSelected(),
+//                  Double.parseDouble(txtPrecio.getText()), dateEntregaPaquete.getDate(),dateEntregaDatos.getDate(),dateLimitePago.getDate(), nombreArchivo,
+//                  dateFechaContrato.getDate(), txtComentarios.getText().trim())){
+//                      this.DialogResult = true;
+//                        this.dispose();
+//                      JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ContratoEditado")
+//                            , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloContrato"), JOptionPane.INFORMATION_MESSAGE); 
+//           
+//                }else{
+//                      JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ErrorMensaje")
+//                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloError"), JOptionPane.INFORMATION_MESSAGE);
+//
+//                }
                 
-            
+            }
+                
         }catch(Exception e){
             
         }

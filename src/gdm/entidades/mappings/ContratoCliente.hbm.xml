@@ -6,7 +6,8 @@
       <column name="id"/>
       <generator class="identity"/>
     </id>
-
+ <many-to-one name="cliente" column="idCliente" 
+            class="gdm.entidades.clases.Cliente" />
   <property name="folio" type="int" column="folio" />
   <many-to-one name="modelo" column="idModelo" 
             class="gdm.entidades.clases.Modelo" />
@@ -33,12 +34,11 @@
   <property name="fechaContrato"  type="date"/> 
   <property name="comentarios" type="string" column="comentarios" length="100"/>
   <property name="liquidado" type="org.hibernate.type.NumericBooleanType" column="liquidado"/>
-<!--
-  <list name="anticipos" cascade="all">
+  
+  <list name="anticipos" cascade="all-delete-orphan">
          <key column="idContratoCliente"/>
          <list-index column="idx"/>
-         <one-to-many class="gdm.entidades.clases.Anticipos"/>
-  </list>
- -->
-   </class>
+         <one-to-many class="gdm.entidades.clases.Anticipo"/>
+  </list> 
+  </class>
 </hibernate-mapping>
