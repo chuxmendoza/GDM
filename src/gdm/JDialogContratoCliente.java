@@ -11,6 +11,8 @@ import java.awt.Cursor;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import negocio.Clases.ContratoClienteNegocio;
 
@@ -41,7 +43,7 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblContratos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         Abonar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -143,11 +145,11 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
             tblContratos.getColumnModel().getColumn(20).setMaxWidth(100);
         }
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar1.png"))); // NOI18N
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Editar1.png"))); // NOI18N
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
@@ -183,7 +185,7 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
                         .addGap(93, 93, 93)
                         .addComponent(Abonar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btnEditar)
                         .addGap(265, 265, 265)
                         .addComponent(jButton3))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1054, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -196,7 +198,7 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3)
                         .addComponent(jButton4))
@@ -231,9 +233,35 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         cc.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+          try
+        {   btnEditar.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tblContratos.getSelectedRow()!= -1){
+                int id = Integer.parseInt(tblContratos.getValueAt(tblContratos.getSelectedRow(), 0).toString());
+
+                JDialogAgregarContratoCliente agregar = new JDialogAgregarContratoCliente(null, true);
+
+                //this.setVisible(true);
+                agregar.id = id;
+                agregar.editar=true;
+                agregar.setVisible(true);
+                if (agregar.DialogResult)
+                {
+                    cargarContratos();
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("SeleccionElemento")
+                    , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloContrato"), JOptionPane.INFORMATION_MESSAGE);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ErrorMensaje")
+                ,  ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloError"), JOptionPane.INFORMATION_MESSAGE);
+        }finally{
+            btnEditar.setCursor(Cursor.getDefaultCursor());
+        }
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     private void AbonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbonarActionPerformed
         // TODO add your handling code here:
@@ -270,7 +298,7 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Abonar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;

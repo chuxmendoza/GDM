@@ -133,7 +133,7 @@ public class EspecialidadNegocio {
         }
         return lista;
     }
-    
+       
     public static List<Especialidad> Buscar(String nombre)
     {
         List<Especialidad> lista = new ArrayList<Especialidad>();

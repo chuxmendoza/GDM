@@ -18,9 +18,12 @@ public class ContratoCliente {
     private Cliente cliente;
     private Modelo modelo;
     private boolean reconocimiento;
+    private boolean titulo;
+    private String dirigido;
     private Agradecimiento agradecimiento;
     private String mensaje;
     private boolean fotoPanoramica;
+    private boolean fotoPersonalizada;
     private boolean fotoMisa;
     private boolean fotoEstudio;
     private Anillo anillo;
@@ -404,6 +407,48 @@ public class ContratoCliente {
      */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    /**
+     * @return the titulo
+     */
+    public boolean isTitulo() {
+        return titulo;
+    }
+
+    /**
+     * @param titulo the titulo to set
+     */
+    public void setTitulo(boolean titulo) {
+        this.titulo = titulo;
+    }
+
+    /**
+     * @return the dirigido
+     */
+    public String getDirigido() {
+        return dirigido;
+    }
+
+    /**
+     * @param dirigido the dirigido to set
+     */
+    public void setDirigido(String dirigido) {
+        this.dirigido = dirigido;
+    }
+
+    /**
+     * @return the fotoPersonalizada
+     */
+    public boolean isFotoPersonalizada() {
+        return fotoPersonalizada;
+    }
+
+    /**
+     * @param fotoPersonalizada the fotoPersonalizada to set
+     */
+    public void setFotoPersonalizada(boolean fotoPersonalizada) {
+        this.fotoPersonalizada = fotoPersonalizada;
     }
  
 }

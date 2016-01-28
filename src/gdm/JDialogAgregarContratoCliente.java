@@ -10,6 +10,7 @@ import gdm.entidades.clases.Anillo;
 import gdm.entidades.clases.Cliente;
 import gdm.entidades.clases.Common;
 import gdm.entidades.clases.Contrato;
+import gdm.entidades.clases.ContratoCliente;
 import gdm.entidades.clases.FotoPanoramica;
 import gdm.entidades.clases.Metal;
 import gdm.entidades.clases.Modelo;
@@ -36,7 +37,8 @@ import negocio.Clases.ModeloNegocio;
  * @author Chuy
  */
 public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
-
+public boolean editar = false;
+ public Integer id = 0;
     /**
      * Creates new form JDialogAgregarContratoCliente
      */
@@ -52,6 +54,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
     Metal metal = new Metal();
     public int idContrato = 0;
     Cliente cliente = new Cliente();
+    public boolean DialogResult = false;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,6 +102,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
         txtDirigido = new javax.swing.JTextField();
         rbTriptico = new javax.swing.JRadioButton();
         comboAgradecimiento = new gdm.presentacion.CustomComboBox();
+        rbTitulo = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         rbFotoPanoramica = new javax.swing.JRadioButton();
@@ -397,7 +401,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         rbReconocimiento.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        rbReconocimiento.setText("Reconocimiento o título");
+        rbReconocimiento.setText("Reconocimiento");
 
         jLabel7.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel7.setText("Agradecimiento #:");
@@ -418,6 +422,9 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
         rbTriptico.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         rbTriptico.setText("Triptico");
 
+        rbTitulo.setFont(new java.awt.Font("Euphemia", 0, 12)); // NOI18N
+        rbTitulo.setText("Título");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -434,13 +441,17 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(rbTriptico, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rbTriptico, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboAgradecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(rbTitulo)
+                                .addGap(33, 33, 33)
                                 .addComponent(rbReconocimiento)
-                                .addGap(0, 2, Short.MAX_VALUE))
-                            .addComponent(comboAgradecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -449,7 +460,8 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbTriptico)
-                    .addComponent(rbReconocimiento))
+                    .addComponent(rbReconocimiento)
+                    .addComponent(rbTitulo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -685,22 +697,12 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 232, Short.MAX_VALUE)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFolio, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 49, Short.MAX_VALUE)
+                                .addGap(18, 28, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -715,7 +717,15 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                         .addGap(268, 268, 268)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dateFechaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(dateFechaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtFolio, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(59, 59, 59))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1106,7 +1116,8 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         try{
-            //            if(!editar){                       
+            
+            if(!editar){                       
             modelo.setId(Integer.parseInt(comboModelo.getSelectedValue().toString()));
             modelo.setImagen(comboModelo.getSelectedValue().toString());
             modelo.setNombre(comboModelo.getSelectedValue().toString());      
@@ -1116,7 +1127,8 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             metal.setId(Integer.parseInt(comboMaterial.getSelectedValue().toString()));
             anillo.setMetal(metal);
             
-            
+            String dirigido = comboDirigido.getSelectedItem().toString();
+                        
             int idAgradecimiento = Integer.parseInt(comboAgradecimiento.getSelectedValue().toString());                                        
             for(Agradecimiento a : agradecimientos)
             {
@@ -1136,18 +1148,20 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             int idCliente = cliente.getId();
             if(idCliente<=0){
                 
-                JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloCliente")
-                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloSeleccion"), JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloContrato")
+                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("SeleccionElemento"), JOptionPane.INFORMATION_MESSAGE);
 
              return;   
             }
           if(ContratoClienteNegocio.Guardar(idContrato, 
                   idCliente,
-                  Integer.parseInt(txtFolio.getText()),modelo.getId(),rbReconocimiento.isSelected() ,agradecimiento.getId(),txtAgradecimiento.getText(),
-                  rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
+                  Integer.parseInt(txtFolio.getText()),modelo.getId(),rbReconocimiento.isSelected() ,rbTitulo.isSelected(),agradecimiento.getId(),txtAgradecimiento.getText(),
+                  dirigido,rbFotoPanoramica.isSelected(),rbFotoPersonalizada.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
                   rbMisa.isSelected(),rbBaile.isSelected(),Integer.parseInt(spMesaExtra.getValue().toString()), Integer.parseInt(spFotosExtra.getValue().toString()),rbTriptico.isSelected(),
                   Double.parseDouble(txtPrecio.getText()), dateEntregaPaquete.getDate(),dateEntregaDatos.getDate(),dateLimitePago.getDate(), nombreArchivo,
                   dateFechaContrato.getDate(), txtComentarios.getText().trim())){
+              this.DialogResult = true;
+                        this.dispose();
                
            JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ContratoAgregado")
                             , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloContrato"), JOptionPane.INFORMATION_MESSAGE); 
@@ -1156,29 +1170,67 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                  JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ErrorMensaje")
                 , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloError"), JOptionPane.INFORMATION_MESSAGE);
 
-          
-//          }else{
-//                //Editar un Contrato Cliente
-//                if(ContratoClienteNegocio.Editar(id, Integer.parseInt(txtFolio.getText()),modelo.getId(),rbReconocimiento.isSelected(),agradecimiento.getId(),txtAgradecimiento.getText(),
-//                  rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
-//                  rbMisa.isSelected(),rbBaile.isSelected(),Integer.parseInt(spMesaExtra.getValue().toString()), Integer.parseInt(spFotosExtra.getValue().toString()),rbTriptico.isSelected(),
-//                  Double.parseDouble(txtPrecio.getText()), dateEntregaPaquete.getDate(),dateEntregaDatos.getDate(),dateLimitePago.getDate(), nombreArchivo,
-//                  dateFechaContrato.getDate(), txtComentarios.getText().trim())){
-//                      this.DialogResult = true;
-//                        this.dispose();
-//                      JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ContratoEditado")
-//                            , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloContrato"), JOptionPane.INFORMATION_MESSAGE); 
-//           
-//                }else{
-//                      JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ErrorMensaje")
-//                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloError"), JOptionPane.INFORMATION_MESSAGE);
+          }
+          }else{
+                
+                
+            modelo.setId(Integer.parseInt(comboModelo.getSelectedValue().toString()));
+            modelo.setImagen(comboModelo.getSelectedValue().toString());
+            modelo.setNombre(comboModelo.getSelectedValue().toString());      
+            
+            anillo.setG(Double.parseDouble(txtGramos.getText()));
+            anillo.setK(Double.parseDouble(txtKilates.getText()));
+            metal.setId(Integer.parseInt(comboMaterial.getSelectedValue().toString()));
+            anillo.setMetal(metal);
+            
+            //String dirigido = comboDirigido.getSelectedItem().toString();
+                        
+            int idAgradecimiento = Integer.parseInt(comboAgradecimiento.getSelectedValue().toString());                                        
+            for(Agradecimiento a : agradecimientos)
+            {
+                if (a.getId() == idAgradecimiento)
+                {
+                    if(!a.getPersonalizada()){
+                       txtAgradecimiento.setText(a.getMensaje());
+                       txtAgradecimiento.enable(true);
+                    }else{
+                        
+                        txtAgradecimiento.setText(a.getMensaje());
+                        txtAgradecimiento.enable(false);
+                    }
+                   agradecimiento= a;
+                }
+            } 
+//            int idCliente = cliente.getId();
+//            if(idCliente<=0){
+//                
+//                JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloCliente")
+//                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("SeleccionElemento"), JOptionPane.INFORMATION_MESSAGE);
 //
-//                }
+//             return;   
+//            }
+                //Editar un Contrato Cliente
+                if(ContratoClienteNegocio.Editar(id,    
+                  Integer.parseInt(txtFolio.getText()),modelo.getId(),rbReconocimiento.isSelected() ,rbTitulo.isSelected(),agradecimiento.getId(),txtAgradecimiento.getText(),
+                  comboDirigido.getName(),rbFotoPanoramica.isSelected(),rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
+                  rbMisa.isSelected(),rbBaile.isSelected(),Integer.parseInt(spMesaExtra.getValue().toString()), Integer.parseInt(spFotosExtra.getValue().toString()),rbTriptico.isSelected(),
+                  Double.parseDouble(txtPrecio.getText()), dateEntregaPaquete.getDate(),dateEntregaDatos.getDate(),dateLimitePago.getDate(), nombreArchivo,
+                  dateFechaContrato.getDate(), txtComentarios.getText().trim())){
+                      this.DialogResult = true;
+                        this.dispose();
+                      JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ContratoEditado")
+                            , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloContrato"), JOptionPane.INFORMATION_MESSAGE); 
+           
+                }else{
+                      JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ErrorMensaje")
+                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloError"), JOptionPane.INFORMATION_MESSAGE);
+
+                }
                 
             }
                 
         }catch(Exception e){
-            
+            System.out.println(e);
         }
              
             
@@ -1240,6 +1292,9 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+         if(editar){
+            cargarEdicion();
+         }
         try
         {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1405,6 +1460,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbMisa;
     private javax.swing.JRadioButton rbReconocimiento;
     private javax.swing.JRadioButton rbRentaToga;
+    private javax.swing.JRadioButton rbTitulo;
     private javax.swing.JRadioButton rbTriptico;
     private javax.swing.JSpinner spFotosExtra;
     private javax.swing.JSpinner spMesaExtra;
@@ -1424,4 +1480,55 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
-}
+
+    private void cargarEdicion() {
+         try{
+                   
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ContratoCliente contrato =ContratoClienteNegocio.Obtener(id);
+        if(contrato != null){
+              
+            comboModelo.setSelectedValue(contrato.getModelo().getId());
+            txtPrecio.setText(String.valueOf(contrato.getPrecio()));
+            dateFechaContrato.setDate(contrato.getFechaContrato());
+            txtFolio.setText(String.valueOf(contrato.getFolio()));
+            rbTriptico.setSelected(contrato.isTriptico());
+            rbTitulo.setSelected(contrato.isTitulo());
+            rbReconocimiento.setSelected(contrato.isReconocimiento());
+            comboAgradecimiento.setSelectedValue(contrato.getAgradecimiento().getId());
+            txtAgradecimiento.setText(contrato.getAgradecimiento().getMensaje());
+            comboDirigido.setSelectedItem(contrato.getDirigido());
+            rbRentaToga.setSelected(contrato.isRentaToga());
+            rbMisa.setSelected(contrato.isMisa());
+            rbBaile.setSelected(contrato.isBaile());
+            spFotosExtra.setValue(contrato.getFotosExtra());
+            spMesaExtra.setValue(contrato.getMesaExtra());
+            rbFotoPanoramica.setSelected(contrato.getFotoPanoramica());
+            rbFotoPersonalizada.setSelected(contrato.isFotoPersonalizada());
+            rbMisa.setSelected(contrato.isMisa());
+            rbBaile.setSelected(contrato.isBaile());
+            rbFotoEstudio.setSelected(contrato.isFotoEstudio());                              
+            comboMaterial.setSelectedValue(contrato.getAnillo().getMetal().getId());
+            txtKilates.setText(String.valueOf(contrato.getAnillo().getK()));
+            txtGramos.setText(String.valueOf(contrato.getAnillo().getG()));
+            txtComentarios.setText(contrato.getComentarios());
+            dateEntregaDatos.setDate(contrato.getFechaEntregaDatos());
+            dateEntregaPaquete.setDate(contrato.getFechaEntregaPaquete());
+            dateLimitePago.setDate(contrato.getFechaLimitePago());
+            
+            
+            
+        }
+     }catch(Exception e){
+            JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("ErrorMensaje")
+                ,  ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloError"), JOptionPane.INFORMATION_MESSAGE);
+          
+     }
+        finally{
+          this.setCursor(Cursor.getDefaultCursor());     
+        }   
+    }
+    
+    
+    }
+

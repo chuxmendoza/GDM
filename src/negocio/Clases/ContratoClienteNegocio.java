@@ -29,8 +29,8 @@ public class ContratoClienteNegocio {
     
     public static Boolean Guardar(int idContrato, 
             int idCliente,
-            int folio, int idModelo, boolean reconocimiento, int agradecimiento, String mensaje, boolean fotoPanoramica,
-            boolean fotoMisa, boolean fotoEstudio, Anillo anillo, boolean rentaToga, boolean misa, boolean baile, int mesaExtra, int fotosExtra, 
+            int folio, int idModelo, boolean reconocimiento,boolean titulo, int agradecimiento, String mensaje,String dirigido, boolean fotoPanoramica,
+            boolean fotoPersonalizada,boolean fotoMisa, boolean fotoEstudio, Anillo anillo, boolean rentaToga, boolean misa, boolean baile, int mesaExtra, int fotosExtra, 
             boolean triptico, double precio, Date fechaEntregaPaquete, Date fechaEntregaDatos, Date fechaLimitePago, String contratoImagen, 
             Date fechaContrato, String comentarios)
     {
@@ -45,9 +45,12 @@ public class ContratoClienteNegocio {
              entidad.setCliente(new Cliente(idCliente));
              entidad.setModelo(new Modelo(idModelo));
              entidad.setReconocimiento(reconocimiento);
+             entidad.setTitulo(titulo);
              entidad.setAgradecimiento(new Agradecimiento(agradecimiento));
              entidad.setMensaje(mensaje);
+             entidad.setDirigido(dirigido);
              entidad.setFotoPanoramica(fotoPanoramica);
+             entidad.setFotoPersonalizada(fotoPersonalizada);
              entidad.setFotoMisa(fotoMisa);
              entidad.setFotoEstudio(fotoEstudio);
              entidad.setAnillo(anillo);
@@ -98,9 +101,9 @@ public class ContratoClienteNegocio {
       return realizado;
     }
     
-    public static Boolean Editar(int id, int folio, int idModelo, boolean reconocimiento, Agradecimiento agradecimiento, String mensaje, 
-            boolean fotoPanoramica, boolean fotoMisa, boolean fotoEstudio, Anillo anillo, boolean rentaToga, boolean misa, boolean baile, int mesaExtra, 
-            int fotosExtra, boolean triptico, double precio, Date fechaEntregaPaquete, Date fechaEntregaDatos, Date fechaLimitePago, String contratoImagen, 
+    public static Boolean Editar(int id,  int folio, int idModelo, boolean reconocimiento,boolean titulo, int agradecimiento, String mensaje,String dirigido, boolean fotoPanoramica,
+            boolean fotoPersonalizada,boolean fotoMisa, boolean fotoEstudio, Anillo anillo, boolean rentaToga, boolean misa, boolean baile, int mesaExtra, int fotosExtra, 
+            boolean triptico, double precio, Date fechaEntregaPaquete, Date fechaEntregaDatos, Date fechaLimitePago, String contratoImagen, 
             Date fechaContrato, String comentarios)
     {
         boolean realizado = false;
@@ -112,9 +115,13 @@ public class ContratoClienteNegocio {
              entidad.setFolio(folio);
              entidad.setModelo(new Modelo(idModelo));
              entidad.setReconocimiento(reconocimiento);
-             entidad.setAgradecimiento(agradecimiento);
+             entidad.setTitulo(titulo);
+             entidad.setTitulo(titulo);
+             entidad.setAgradecimiento(new Agradecimiento (agradecimiento));
              entidad.setMensaje(mensaje);
+             entidad.setDirigido(dirigido);
              entidad.setFotoPanoramica(fotoPanoramica);
+             entidad.setFotoPersonalizada(fotoPersonalizada);
              entidad.setFotoMisa(fotoMisa);
              entidad.setFotoEstudio(fotoEstudio);
              entidad.setAnillo(anillo);
