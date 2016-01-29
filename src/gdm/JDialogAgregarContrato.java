@@ -506,8 +506,6 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
         // TODO add your handling code here:
              try{
              if(!editar){
-
-                   
                     fotoPanoramica.setFecha(jXDatePickerFoto.getDate());
                     fotoPanoramica.setLugar(txtLugarFoto.getText());
                     fotoPanoramica.setHora((int)spHoraFoto.getValue());
@@ -578,19 +576,7 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try{
-            //Asigna el nombre del atributo  que tendra el valor del combo seleccionado.
-           comboEscuela.setValueMember("id");
-            //Asigna el nombre del atributo a el valor que mostrara el combo.
-           comboEscuela.setDisplayMember("nombre");
-           //Asigna la lista de valores a el combo
-           comboEscuela.setDataSource(EscuelaNegocio.ListadoCombo());
-           comboEscuela.setSelectedIndex(-1);
-            
-        }catch(Exception e){
-            
-        }
-            try{
+        try{ 
             //Asigna el nombre del atributo  que tendra el valor del combo seleccionado.
            comboEspecialidad.setValueMember("id");
             //Asigna el nombre del atributo a el valor que mostrara el combo.
@@ -599,6 +585,13 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
            comboEspecialidad.setDataSource(EspecialidadNegocio.Listado());
            comboEspecialidad.setSelectedIndex(-1);
             
+            //Asigna el nombre del atributo  que tendra el valor del combo seleccionado.
+           comboEscuela.setValueMember("id");
+            //Asigna el nombre del atributo a el valor que mostrara el combo.
+           comboEscuela.setDisplayMember("nombre");
+           //Asigna la lista de valores a el combo
+           comboEscuela.setDataSource(EscuelaNegocio.ListadoCombo());
+           comboEscuela.setSelectedIndex(-1);
         }catch(Exception e){
             
         }

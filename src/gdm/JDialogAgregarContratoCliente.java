@@ -1133,6 +1133,12 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
                    agradecimiento= a;
                 }
             } 
+          int idC = cliente.getId();
+          if (idC <= 0)
+          {
+              //Mensaje de que debe seleccionar un cliente 
+              return;
+          }
           if(ContratoClienteNegocio.Guardar(idContrato, 
                   Integer.parseInt(txtFolio.getText()),modelo.getId(),rbReconocimiento.isSelected() ,agradecimiento.getId(),txtAgradecimiento.getText(),
                   rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
@@ -1236,8 +1242,7 @@ public class JDialogAgregarContratoCliente extends javax.swing.JDialog {
             JDialogAgregarCliente cliente = new JDialogAgregarCliente(null, true);
             cliente.setVisible(true);
             if(cliente.DialogResult)
-            {
-                
+            { 
                 cargarCliente(ClienteNegocio.Obtener(cliente.id));
             }
         }

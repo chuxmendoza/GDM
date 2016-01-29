@@ -5,6 +5,13 @@
  */
 package gdm;
 
+import gdm.entidades.clases.Anticipo;
+import java.awt.Cursor;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import negocio.Clases.ContratoClienteNegocio;
+
 /**
  *
  * @author Chuy
@@ -134,6 +141,11 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         });
 
         Abonar.setText("Abonar");
+        Abonar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AbonarActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Eliminar1.png"))); // NOI18N
         jButton3.setContentAreaFilled(false);
@@ -157,9 +169,9 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(93, 93, 93)
                         .addComponent(Abonar)
-                        .addGap(133, 133, 133)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(265, 265, 265)
                         .addComponent(jButton3))
@@ -174,10 +186,12 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Abonar)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3)
-                        .addComponent(jButton4)))
+                        .addComponent(jButton4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Abonar)
+                        .addGap(13, 13, 13)))
                 .addGap(41, 41, 41))
         );
 
@@ -200,7 +214,7 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
         JDialogAgregarContratoCliente cc = new JDialogAgregarContratoCliente(null, rootPaneCheckingEnabled);
         cc.idContrato = idContrato;
         cc.setVisible(true);
@@ -210,7 +224,32 @@ public class JDialogContratoCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void AbonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbonarActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tblContratos.getSelectedRow()!= -1)
+            {    
+                JPanelAnticipo frame = new JPanelAnticipo(null, true);
+                //frame.idContratoCliente =  Integer.parseInt(tblContratos.getValueAt(tblContratos.getSelectedRow(), 0).toString());
+                //frame.total =  Double.parseDouble(tblContratos.getValueAt(tblContratos.getSelectedRow(), 17).toString());
+                frame.idContratoCliente = 2;
+                frame.total = 3500;
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            }  
+        }
+        catch(Exception ex)
+        {
+            
+        }finally
+        {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        }
+    }//GEN-LAST:event_AbonarActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Abonar;

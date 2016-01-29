@@ -12,7 +12,7 @@
   <property name="telefono" type="string" column="telefono" length="30"/>
   <property name="celular" type="string" column="celular" length="30"/>  
   <property name="correo" type="string" column="correo" length="80"/>
-<many-to-one name="direccion" column="idDireccion" 
+<many-to-one name="direccion" column="idDireccion" lazy="false"
             class="gdm.entidades.clases.Direccion" cascade="save-update" />
   </class> 
 </hibernate-mapping>

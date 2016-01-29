@@ -9,7 +9,7 @@
 
   <property name="g" type="double" column="g" /> 
   <property name="k" type="double" column="k" /> 
- <many-to-one name="metal" column="idMetal" 
+ <many-to-one name="metal" column="idMetal" lazy="false"
             class="gdm.entidades.clases.Metal" />
   
     </class>

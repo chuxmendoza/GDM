@@ -8,16 +8,16 @@
     </id>
 
   <property name="folio" type="int" column="folio" />
-  <many-to-one name="modelo" column="idModelo" 
+  <many-to-one name="modelo" column="idModelo" lazy="false"
             class="gdm.entidades.clases.Modelo" />
   <property name="reconocimiento" type="org.hibernate.type.NumericBooleanType" column="reconocimiento" />
-  <many-to-one name="agradecimiento" column="idAgradecimiento" 
+  <many-to-one name="agradecimiento" column="idAgradecimiento" lazy="false"
             class="gdm.entidades.clases.Agradecimiento" />
   <property name="mensaje" type="string" column="mensaje" length="500"/>
   <property name="fotoMisa" type="org.hibernate.type.NumericBooleanType" column="fotoMisa" />
   <property name="fotoPanoramica" type="org.hibernate.type.NumericBooleanType" column="fotoPanoramica" />
   <property name="fotoEstudio" type="org.hibernate.type.NumericBooleanType" column="fotoEstudio" />
-  <many-to-one name="anillo" column="idAnillo" cascade="save-update"
+  <many-to-one name="anillo" column="idAnillo" cascade="save-update" lazy="false"
             class="gdm.entidades.clases.Anillo" />
   <property name="rentaToga" type="org.hibernate.type.NumericBooleanType" column="rentaToga" />
   <property name="misa" type="org.hibernate.type.NumericBooleanType" column="misa" />
@@ -33,12 +33,11 @@
   <property name="fechaContrato"  type="date"/> 
   <property name="comentarios" type="string" column="comentarios" length="100"/>
   <property name="liquidado" type="org.hibernate.type.NumericBooleanType" column="liquidado"/>
-<!--
-  <list name="anticipos" cascade="all">
+  
+  <list name="anticipos" cascade="all-delete-orphan">
          <key column="idContratoCliente"/>
          <list-index column="idx"/>
-         <one-to-many class="gdm.entidades.clases.Anticipos"/>
-  </list>
- -->
-   </class>
+         <one-to-many class="gdm.entidades.clases.Anticipo"/>
+  </list> 
+  </class>
 </hibernate-mapping>

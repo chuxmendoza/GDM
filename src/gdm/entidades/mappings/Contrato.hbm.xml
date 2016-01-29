@@ -7,9 +7,9 @@
       <generator class="identity"/>
     </id>
   
-  <many-to-one name="escuela" column="idEscuela" 
+  <many-to-one name="escuela" column="idEscuela" lazy="false"
             class="gdm.entidades.clases.Escuela"/>
-  <many-to-one name="especialidad" column="idEspecialidad" 
+  <many-to-one name="especialidad" column="idEspecialidad" lazy="false"
             class="gdm.entidades.clases.Especialidad" />
  
   <property name="generacion" type="string" column="generacion" length="50"/>
@@ -17,8 +17,8 @@
   
   <many-to-one name="fotoPanoramica" column="idFotoPanoramica" 
             class="gdm.entidades.clases.FotoPanoramica" lazy="false" cascade="save-update"/>
-  <many-to-one name="misa" column="idMisa" 
-            class="gdm.entidades.clases.Misa" lazy="false" cascade="save-update"/>
+  <many-to-one name="misa" column="idMisa" lazy="false"
+            class="gdm.entidades.clases.Misa" cascade="save-update"/>
   <many-to-one name="baile" column="idBaile" 
             class="gdm.entidades.clases.Baile" lazy="false" cascade="save-update"/>
   <property name="comentarios" type="string" column="comentarios" length="500"/>

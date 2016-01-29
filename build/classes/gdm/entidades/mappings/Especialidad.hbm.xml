@@ -9,6 +9,5 @@
             <generator class="identity" />
         </id>
        <property name="nombre" type="string" column="nombre" length="80"/> 
-     
     </class>
 </hibernate-mapping>

@@ -37,7 +37,9 @@ public class AnticipoNegocio {
         }
         return entidad; 
     }
-      public static Boolean Guardar(int idContratoCliente, String nombre, String celular, String telefono,double cantidad,String concepto,String recibo, Date fecha)
+      public static Boolean Guardar(int idContratoCliente, 
+              String nombre, String celular, String telefono,double cantidad,String concepto,String recibo, 
+              Date fecha)
     {
         boolean realizado = false;
         Transaction tx = null; 
@@ -49,7 +51,7 @@ public class AnticipoNegocio {
              tx = session.beginTransaction();
              Anticipo entidad = new Anticipo();            
              entidad.setNombre(nombre);
-             entidad.setConcepto(celular);
+             entidad.setCelular(celular);
              entidad.setTelefono(telefono);
              entidad.setCantidad(cantidad);
              entidad.setConcepto(concepto);
@@ -78,7 +80,8 @@ public class AnticipoNegocio {
         }
       return realizado;
     }
-       public static Boolean Editar(int id,String nombre, String celular, String telefono,double cantidad,String concepto,String recibo)
+       public static Boolean Editar(int id,
+               String nombre, String celular, String telefono,double cantidad,String concepto,String recibo)
     {
         boolean realizado = false;
         Transaction tx = null; 
@@ -89,7 +92,7 @@ public class AnticipoNegocio {
              tx = session.beginTransaction();
              Anticipo entidad = Obtener(id);             
               entidad.setNombre(nombre);
-             entidad.setConcepto(celular);
+             entidad.setCelular(celular);
              entidad.setTelefono(telefono);
              entidad.setCantidad(cantidad);
              entidad.setConcepto(concepto);
