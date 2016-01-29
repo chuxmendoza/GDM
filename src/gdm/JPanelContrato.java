@@ -294,6 +294,10 @@ public class JPanelContrato extends javax.swing.JPanel {
                 JDialogContratoCliente contrato = new JDialogContratoCliente(null, true);
                 contrato.idContrato =  Integer.parseInt(tblGraduacion.getValueAt(tblGraduacion.getSelectedRow(), 0).toString());
                 contrato.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("SeleccionElemento")
+                    , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloContrato"), JOptionPane.INFORMATION_MESSAGE);
+        
             }  
         }
         catch(Exception ex)

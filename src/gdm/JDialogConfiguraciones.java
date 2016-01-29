@@ -776,6 +776,12 @@ public class JDialogConfiguraciones extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Agradecimientos", jPanelAgradecimientos);
 
+        jPanelModelos.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jPanelModelosPropertyChange(evt);
+            }
+        });
+
         jPanel5.setBackground(new java.awt.Color(248, 255, 255));
         jPanel5.setMaximumSize(new java.awt.Dimension(750, 550));
         jPanel5.setMinimumSize(new java.awt.Dimension(750, 550));
@@ -1423,6 +1429,11 @@ public class JDialogConfiguraciones extends javax.swing.JDialog {
             btnEliminar.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_btnEliminar1ActionPerformed
+
+    private void jPanelModelosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jPanelModelosPropertyChange
+        // TODO add your handling code here:
+        cargarModelos();
+    }//GEN-LAST:event_jPanelModelosPropertyChange
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables

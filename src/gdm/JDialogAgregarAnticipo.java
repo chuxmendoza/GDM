@@ -5,6 +5,12 @@
  */
 package gdm;
 
+import gdm.entidades.clases.Anticipo;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import negocio.Clases.ContratoClienteNegocio;
+
 /**
  *
  * @author Chuy
@@ -18,7 +24,9 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+    
+    public int idContratoCliente = 0;
+    public double total = 0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,22 +38,24 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
 
         jPanel8 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblContratosC = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblContratosC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "id", "Nombre", "Concepto", "Cantidad", "Resto", "Fecha", "Celular", "Teléfono"
@@ -59,33 +69,33 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jScrollPane3.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(250);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(250);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(250);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(200);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(4).setMinWidth(200);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(5).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(150);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(150);
-            jTable1.getColumnModel().getColumn(7).setMinWidth(150);
-            jTable1.getColumnModel().getColumn(7).setPreferredWidth(150);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(150);
+        tblContratosC.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jScrollPane3.setViewportView(tblContratosC);
+        if (tblContratosC.getColumnModel().getColumnCount() > 0) {
+            tblContratosC.getColumnModel().getColumn(0).setMinWidth(0);
+            tblContratosC.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblContratosC.getColumnModel().getColumn(0).setMaxWidth(0);
+            tblContratosC.getColumnModel().getColumn(1).setMinWidth(250);
+            tblContratosC.getColumnModel().getColumn(1).setPreferredWidth(250);
+            tblContratosC.getColumnModel().getColumn(1).setMaxWidth(250);
+            tblContratosC.getColumnModel().getColumn(2).setMinWidth(100);
+            tblContratosC.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tblContratosC.getColumnModel().getColumn(2).setMaxWidth(100);
+            tblContratosC.getColumnModel().getColumn(3).setMinWidth(200);
+            tblContratosC.getColumnModel().getColumn(3).setPreferredWidth(200);
+            tblContratosC.getColumnModel().getColumn(3).setMaxWidth(200);
+            tblContratosC.getColumnModel().getColumn(4).setMinWidth(200);
+            tblContratosC.getColumnModel().getColumn(4).setPreferredWidth(200);
+            tblContratosC.getColumnModel().getColumn(4).setMaxWidth(200);
+            tblContratosC.getColumnModel().getColumn(5).setMinWidth(100);
+            tblContratosC.getColumnModel().getColumn(5).setPreferredWidth(100);
+            tblContratosC.getColumnModel().getColumn(5).setMaxWidth(100);
+            tblContratosC.getColumnModel().getColumn(6).setMinWidth(150);
+            tblContratosC.getColumnModel().getColumn(6).setPreferredWidth(150);
+            tblContratosC.getColumnModel().getColumn(6).setMaxWidth(150);
+            tblContratosC.getColumnModel().getColumn(7).setMinWidth(150);
+            tblContratosC.getColumnModel().getColumn(7).setPreferredWidth(150);
+            tblContratosC.getColumnModel().getColumn(7).setMaxWidth(150);
         }
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gdm/entidades/imagenes/Agregar1.png"))); // NOI18N
@@ -166,6 +176,36 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        cargarAbonos();
+    }//GEN-LAST:event_formWindowOpened
+    
+    private void cargarAbonos() 
+    {
+        DefaultTableModel mod = (DefaultTableModel)tblContratosC.getModel();
+        List<Anticipo> abonos = new ArrayList();
+        if(mod.getRowCount() > 0)
+            mod.removeRow(0);
+        
+        abonos = ContratoClienteNegocio.ListarAbonos(idContratoCliente);
+        
+        for(Anticipo a : abonos)
+        {
+            int id = a.getId();
+            String nombre = a.getNombre();
+            String concepto = a.getConcepto();
+            double cantidad = a.getCantidad();
+            double resto = total -= a.getCantidad();
+            String fecha = a.getFecha().toString();
+            String celular = a.getCelular();
+            String telefono = a.getTelefono();
+            mod.addRow(new Object[] {id, nombre, concepto, cantidad, resto, fecha, celular, telefono});
+        } 
+        tblContratosC.setModel(mod);
+    }   
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -215,6 +255,6 @@ public class JDialogAgregarAnticipo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblContratosC;
     // End of variables declaration//GEN-END:variables
 }
