@@ -53,6 +53,8 @@ public boolean editar = false;
     Anillo anillo = new Anillo();
     Metal metal = new Metal();
     public int idContrato = 0;
+    public int idCliente= 0;
+    String dirigido;
     Cliente cliente = new Cliente();
     public boolean DialogResult = false;
     /**
@@ -412,7 +414,7 @@ public boolean editar = false;
         jScrollPane1.setViewportView(txtAgradecimiento);
 
         comboDirigido.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        comboDirigido.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mis Padres", "Mi Familia", "Otro" }));
+        comboDirigido.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No aplica", "Mis Padres", "Mi Familia", "Otro" }));
 
         jLabel8.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel8.setText("Dirigido a:");
@@ -1127,7 +1129,16 @@ public boolean editar = false;
             metal.setId(Integer.parseInt(comboMaterial.getSelectedValue().toString()));
             anillo.setMetal(metal);
             
-            String dirigido = comboDirigido.getSelectedItem().toString();
+            int combo = comboDirigido.getSelectedIndex();
+            switch(combo){
+                case 1: dirigido = "No aplica"; break;
+                case 2: dirigido = "A mis padres"; break;
+                case 3: dirigido = "A mi familia"; break;
+                case 4: dirigido = txtDirigido.getText(); break;
+                    
+            }
+            
+            
                         
             int idAgradecimiento = Integer.parseInt(comboAgradecimiento.getSelectedValue().toString());                                        
             for(Agradecimiento a : agradecimientos)
@@ -1183,7 +1194,13 @@ public boolean editar = false;
             metal.setId(Integer.parseInt(comboMaterial.getSelectedValue().toString()));
             anillo.setMetal(metal);
             
-            //String dirigido = comboDirigido.getSelectedItem().toString();
+               int combo = comboDirigido.getSelectedIndex();
+            switch(combo){
+                case 0: dirigido = "A mis padres"; break;
+                case 1: dirigido = "A mi familia"; break;
+                case 2: dirigido = txtDirigido.getText(); break;
+                    
+            }
                         
             int idAgradecimiento = Integer.parseInt(comboAgradecimiento.getSelectedValue().toString());                                        
             for(Agradecimiento a : agradecimientos)
@@ -1201,18 +1218,19 @@ public boolean editar = false;
                    agradecimiento= a;
                 }
             } 
-//            int idCliente = cliente.getId();
-//            if(idCliente<=0){
-//                
-//                JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloCliente")
-//                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("SeleccionElemento"), JOptionPane.INFORMATION_MESSAGE);
-//
-//             return;   
-//            }
+            int idCliente = cliente.getId();
+            if(idCliente<=0){
+                
+                JOptionPane.showMessageDialog(this, ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("TituloCliente")
+                , ResourceBundle.getBundle("gdm/entidades/clases/resource").getString("SeleccionElemento"), JOptionPane.INFORMATION_MESSAGE);
+
+             return;   
+            }
                 //Editar un Contrato Cliente
-                if(ContratoClienteNegocio.Editar(id,    
+                if(ContratoClienteNegocio.Editar(id,
+                  idCliente,
                   Integer.parseInt(txtFolio.getText()),modelo.getId(),rbReconocimiento.isSelected() ,rbTitulo.isSelected(),agradecimiento.getId(),txtAgradecimiento.getText(),
-                  comboDirigido.getName(),rbFotoPanoramica.isSelected(),rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
+                  dirigido,rbFotoPanoramica.isSelected(),rbFotoPanoramica.isSelected(),rbFotoMisa.isSelected(),rbFotoEstudio.isSelected(),anillo,rbRentaToga.isSelected(),
                   rbMisa.isSelected(),rbBaile.isSelected(),Integer.parseInt(spMesaExtra.getValue().toString()), Integer.parseInt(spFotosExtra.getValue().toString()),rbTriptico.isSelected(),
                   Double.parseDouble(txtPrecio.getText()), dateEntregaPaquete.getDate(),dateEntregaDatos.getDate(),dateLimitePago.getDate(), nombreArchivo,
                   dateFechaContrato.getDate(), txtComentarios.getText().trim())){
@@ -1485,9 +1503,17 @@ public boolean editar = false;
          try{
                    
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        ContratoCliente contrato =ContratoClienteNegocio.Obtener(id);
+        ContratoCliente contrato =ContratoClienteNegocio.Obtener(id);         
         if(contrato != null){
-              
+            
+            if(contrato.getCliente() != null){
+            txtNombre.setText(contrato.getCliente().getNombre());
+            txtTelefono.setText(contrato.getCliente().getTelefono());
+            txtCelular.setText(contrato.getCliente().getCelular());
+            txtCorreo.setText(contrato.getCliente().getCorreo());
+            txtDireccion.setText(contrato.getCliente().getDireccion().toString());
+                
+            }
             comboModelo.setSelectedValue(contrato.getModelo().getId());
             txtPrecio.setText(String.valueOf(contrato.getPrecio()));
             dateFechaContrato.setDate(contrato.getFechaContrato());

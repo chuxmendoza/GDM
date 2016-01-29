@@ -101,7 +101,7 @@ public class ContratoClienteNegocio {
       return realizado;
     }
     
-    public static Boolean Editar(int id,  int folio, int idModelo, boolean reconocimiento,boolean titulo, int agradecimiento, String mensaje,String dirigido, boolean fotoPanoramica,
+    public static Boolean Editar(int id,int idCliente,  int folio, int idModelo, boolean reconocimiento,boolean titulo, int agradecimiento, String mensaje,String dirigido, boolean fotoPanoramica,
             boolean fotoPersonalizada,boolean fotoMisa, boolean fotoEstudio, Anillo anillo, boolean rentaToga, boolean misa, boolean baile, int mesaExtra, int fotosExtra, 
             boolean triptico, double precio, Date fechaEntregaPaquete, Date fechaEntregaDatos, Date fechaLimitePago, String contratoImagen, 
             Date fechaContrato, String comentarios)
@@ -113,6 +113,7 @@ public class ContratoClienteNegocio {
              tx = session.beginTransaction();
              ContratoCliente entidad = Obtener(id);
              entidad.setFolio(folio);
+             entidad.setCliente(new Cliente(idCliente));             
              entidad.setModelo(new Modelo(idModelo));
              entidad.setReconocimiento(reconocimiento);
              entidad.setTitulo(titulo);

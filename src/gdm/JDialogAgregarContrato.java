@@ -164,7 +164,7 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel6.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
-        jLabel6.setText("Foto panorámica");
+        jLabel6.setText("Foto Grupal");
 
         jLabel7.setFont(new java.awt.Font("Euphemia", 0, 14)); // NOI18N
         jLabel7.setText("Fecha:");
@@ -209,11 +209,11 @@ public class JDialogAgregarContrato extends javax.swing.JDialog {
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spMinutoFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addGap(119, 119, 119))
+                .addGap(130, 130, 130))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
